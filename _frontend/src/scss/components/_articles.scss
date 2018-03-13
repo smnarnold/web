@@ -1,0 +1,21 @@
+.article {
+  padding: 5.5em 0;
+
+  &:nth-child(even) {
+    background-color: palette(grey, light);
+  }
+
+  .wrapper {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 30px;
+  }
+}
+
+@media (min-width: 768px) {
+  .article {
+    .wrapper {
+      padding: 0 40px;
+    }
+  }
+}

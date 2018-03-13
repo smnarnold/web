@@ -1,0 +1,18 @@
+$s: 0.3s;
+
+$palettes: (
+  grey: (
+    light: #eee,
+    base: #888,
+    medium: #414141,
+    dark: #444,
+  ),
+  blue: (
+    base: #08c
+  )
+);
+
+$fonts: (
+  sans-serif: #{ helvetica, arial, sans-serif },
+  serif: #{ Georgia, Times, serif }
+);

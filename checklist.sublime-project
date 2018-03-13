@@ -1,0 +1,14 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"folder_exclude_patterns": ["assets", "node_modules"],
+			"file_exclude_patterns": []
+		}
+	],
+  "settings":
+  {
+      "tab_size": 2
+  },
+}
