@@ -77,6 +77,23 @@
           </ol>
         </section>
 
+        <section class="section is-management is-dev" id="support">
+          <h3>
+            <a href="#support">Support</a>
+          </h3>
+          <h4 id="support-navigateurs">
+            <a href="#support-navigateurs">Navigateurs</a>
+          </h4>
+          <p>Dernière version -1 et Internet Explorer 11.</p>
+          <h4 id="support-mobile">
+            <a href="#support-mobile">Mobile</a>
+          </h4>
+          <ul>
+            <li><strong>iOS</strong> version courante -2</li>
+            <li><strong>Android</strong> version courante -2</li>
+          </ul>
+        </section>
+
         <section class="section is-creation is-dev" id="grille">
           <h3>
             <a href="#grille">Grille</a>
@@ -107,6 +124,16 @@
               <td>1200px</td>
             </tr>
           </table>
+        </section>
+
+        <section class="section is-management" id="impression">
+          <h3>
+            <a href="#impression">Impression</a>
+          </h3>
+          <ul>
+            <li>Doit-on se soucier du rendu visuel lors de l'impression&thinsp;?</li>
+            <li>Si oui, doit-on supporter <strong>toutes les pages</strong>&thinsp;?</li>
+          </ul>
         </section>
 
         <section class="section is-creation is-management" id="fontes">
@@ -295,6 +322,7 @@
           <h3>
             <a href="#composantes-recherche">Recherche</a>
           </h3>
+
           <h4 id="composantes-barre-de-recherche">
             <a href="#composantes-barre-de-recherche">Barre de recherche</a>
           </h4>
@@ -306,13 +334,13 @@
             <li>Si la barre de recherche apparait, quel est le moyen de la <strong>fermer</strong> et est-ce facile de le différencier du bouton d'effacement <em>(Clear ou X)</em> <em>(Si il est présent)</em>&thinsp;?</li>
             <li>Quel est l'apparence des suggestions fournis par la barre de recherche&thinsp;?</li>
           </ul>
+
           <h4 id="composantes-recherche-page-de-resultats">
             <a href="#composantes-recherche-page-de-resultats">Page de résultats</a>
           </h4>
           <ul>
             <li>Est-ce qu'une <strong>barre de recherche</strong> est affichée dans la page ou utilise t'on la barre de recherche globale <em>(Ex: la barre de recherche du menu)</em>&thinsp;?</li>
             <li>Quel est l'<strong>apprence des résultats</strong>&thinsp;? Est-ce le même qu'ailleur dans le site&thinsp;? Si oui est-ce que ces styles se marient bien ensemble&thinsp;?</li>
-            <li>Quelles sont les <strong><em>"refiners/facets"</em></strong> qui seront utilisés et quel seront leur apparence&thinsp;?</li>
             <li><strong>Combiens d'items</strong> seront affiché par <em>"refiner/facet"</em> <em>(ex: 5 plus pertinents et un "show more" englobant les autres)</em>&thinsp;?</li>
             <li>Quel est le <strong>sorting par défaut</strong>&thinsp;? Offrons nous d'autres options <em>(ex: Menu déroulant par date, par prix, etc.)</em></li>
             <li>Affichons-nous un <strong>pager</strong>, un <em>"load more"</em> ou un infinite scroll&thinsp;? Et quel style appliquerons nous&thinsp;?</li>
@@ -320,6 +348,15 @@
             <li>Que ce passe-til si il n'y a <strong>pas de résultats</strong>&thinsp;?</li>
             <li>Affichons-nous le <strong>détail de la recherche</strong> <em>(ex: le nombre de résultats trouvés en X temps avec X mot clé)</em> et si oui, quel est son style&thinsp;?</li>
             <li>Y a t'il plus d'un <strong>type d'affichage</strong> disponible <em>(liste/tuiles)</em>&thinsp;?</li>
+          </ul>
+
+          <h4 id="composantes-recherche-refiners">
+            <a href="#composantes-recherche-refiners">Refiners/facets</a>
+          </h4>
+          <ul>
+            <li>Quelles sont les <strong><em>"refiners/facets"</em></strong> qui seront utilisés et quel seront leur apparence&thinsp;?</li>
+            <li>Y a t'il un <strong>nombre maximum</strong> de <em>"refiners/facets"</em>&thinsp;?</li>
+            <li>Est-ce que les refiners, sont convertis en <strong>menu déroulant sur mobile</strong>&thinsp;?</li>
           </ul>
         </section>
 
@@ -350,6 +387,18 @@
             <li>Est-ce que la description peut contenir du <strong>HTML</strong>&thinsp;? <em>(Ex: balise sup, gras, italique, etc).</em></li>
             <li>Est-ce que la description peut être <strong>tronquée</strong>, si oui après quelle longueur&thinsp;?</li>
             <li>Est-ce que l'éditeur peut choisir parmis différentes fontes, tailles, couleurs, etc&thinsp;? <em>(Souvenez-vous que plus d'options = plus de flexibilité, mais moins de cohérence visuelle)</em>.</li>
+          </ul>
+        </section>
+
+        <section class="section is-creation is-management is-dev" id="composantes-fil-dariane">
+          <h3>
+            <a href="#composantes-fil-dariane">Fil d'ariane</a>
+          </h3>
+          <ul>
+            <li>Affichons-nous l'<strong>élément courant</strong>&thinsp;?</li>
+            <li>Si oui, est-il cliquable et est-il visuellement <strong>différent</strong> du reste&thinsp;?</li>
+            <li>Doit-on prévoir des <strong>short names</strong> pour afficher dans le fil d'ariane&thinsp;? <br><em>(Ex: "Recherche et développement technologique" affiche comme "R&D technologique" dans le fil d'ariane")</em></li>
+            <li>Que ce passe t'il si le fil d'ariane est <strong>trop long</strong> pour son espace&thinsp;? Doit-il tomber sur 2 lignes, doit-on le tronquer&thinsp;?</li>
           </ul>
         </section>
 
@@ -408,6 +457,33 @@
 
         <section class="section is-creation is-management is-dev" id="composantes-carousel">
           <h3>
+            <a href="#composantes-carousel">Vidéo</a>
+          </h3>
+          <ul>
+            <li><strong>Où sera hébergé la vidéo</strong> sur nos serveurs, Youtube, Viméo, etc&thinsp;?</li>
+            <li>Désire-ton afficher les <strong>contrôles</strong> de la vidéo <em>(play/pause, volume, mute, etc)</em>&thinsp;?</li>
+            <li>Est-ce que la vidéo doit jouer en <strong>plein écran</strong> sur mobile&thinsp;?</li>
+            <li>Pensez à <strong>optimiser vos videos</strong> <em>(La compression vidéo est l'une des optimisation aillant le plus d'impact sur la performance d'un site)</em>.</li>
+          </ul>
+          <h4 id="composantes-video-dans-la-page">
+            <a href="#composantes-video-dans-la-page">Dans la page</a>
+          </h4>
+          <ul>
+            <li>Doit-elle jouer <strong>automatiquement</strong>&thinsp;? <em>(Dans le cas d'une vidéo <u>avec son</u>, il est fortement déconseillé de la faire jouer automatiquement)</em>.</li>
+            <li>Si non, doit-il y avoir un <em>poster</em> en attendant que l'utilisateur démarre la vidéo&thinsp;?</li>
+            <li>Que ce passe-t'il <strong>lorsque la vidéo est terminée</strong>&thinsp;? joue t-elle en loop&thinsp;?</li>
+          </ul>
+          <h4 id="composantes-video-en-popup">
+            <a href="#composantes-video-en-popup">En popup</a>
+          </h4>
+          <ul>
+            <li>Sur mobile, ouvre t-on le popup ou redirigeons nous l'usager vars l'<strong>app Youtube</strong>&thinsp;?<br><em>(L'app Youtube nous sors du site, mais offre une expérience utilisateur plus agréable)</em>.</li>
+            <li>Que ce passe-til <strong>lorsque la vidéo est terminée</strong>&thinsp;? Est-ce que le popup doit se fermer&thinsp;?</li>
+          </ul>
+        </section>
+
+        <section class="section is-creation is-management is-dev" id="composantes-carousel">
+          <h3>
             <a href="#composantes-carousel">Carousel</a>
           </h3>
           <ul>
@@ -423,16 +499,46 @@
           </ul>
         </section>
 
+        <section class="section is-creation is-management is-dev" id="composantes-accordeon">
+          <h3>
+            <a href="#composantes-accordeon">Accordeon</a>
+          </h3>
+          <ul>
+            <li><strong>Q'est-ce qui est cliquable</strong> toute la barre de titre ou seulement l'icone&thinsp;?</li>
+            <li>Est-ce que seulement un tirroir peut-être ouvert à la fois ou peuvent-il tous être ouvert en même temps&thinsp;? <em>(Accordeon vs Expend/collapse)</em></li>
+            <li>Doit-il y avoir une <strong>section ouverte par défaut</strong>&thinsp;? Si oui, est-ce toujours la première&thinsp;?</li>
+            <li>Est-ce que l'accordeon affiche <strong>toujours sous forme d'accordeon</strong> ou affiche t'il comme du texte normal à partir d'un certain breakpoint&thinsp;?</li>
+          </ul>
+        </section>
+
         <section class="section is-creation is-management is-dev" id="composantes-formulaires">
           <h3>
             <a href="#composantes-formulaires">Formulaires</a>
           </h3>
           <ul>
+            <li>Utilisons-nous les <strong>boutons radio</strong> natifs ou devons-nous en créer des personnalisés&thinsp;?</li>
+            <li>Utilisons-nous les <strong>boite à cocher</strong> natives ou devons-nous en créer des personnalisés&thinsp;?</li>
+            <li>Utilisons-nous les <strong>menu déroulants</strong> natifs ou devons-nous en créer des personnalisés&thinsp;?<br><em>(Il est préférable de minimiser le design du menu déroulant afin de laisser soin au navigateur de choisir son affichage lorsqu'ouvert: par en haut, par en bas en roulette sur mobile, etc).</em></li>
             <li>Avons-nous prévu des <strong>messages d'erreurs</strong> <u>clairs</u> pour les champs&thinsp;?</li>
             <li>Avons-nous prévu un message/page de <strong>confirmation</strong> à l'envois&thinsp;?</li>
             <li>Devons-nous valider l'identité de l'usager via un <strong>Captcha</strong>&thinsp;?</li>
           </ul>
         </section>
+      </div>
+    </article>
+
+    <!--=== Composante ===============================-->
+    <article class="article" id="lexique">
+      <div class="wrapper">
+        <h2>
+          <a href="#lexique">Lexique</a>
+        </h2>
+
+         <section class="section">
+          <ul>
+            <li></li>
+          </ul>
+         </section>
       </div>
     </article>
   </div>
