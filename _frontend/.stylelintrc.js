@@ -8,7 +8,8 @@ module.exports = {
       "ignore": ["inside-function"]
     }],
     "at-rule-no-unknown": null,
-    "max-nesting-depth": 3,
+    "max-nesting-depth": 4,
     "order/properties-alphabetical-order": null,
+    "selector-no-qualifying-type": null
   },
 };

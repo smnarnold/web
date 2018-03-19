@@ -11,15 +11,17 @@ h4 {
     position: relative;
     text-decoration: none;
 
-    &:hover {
-      color: currentColor;
-      text-decoration: none;
+    &.anchor {
+      &:hover {
+        color: currentColor;
+        text-decoration: none;
 
-      &::before {
-        content: '§';
-        padding-right: 0.3em;
-        position: absolute;
-        right: 100%;
+        &::before {
+          content: '§';
+          padding-right: 0.3em;
+          position: absolute;
+          right: 100%;
+        }
       }
     }
   }
