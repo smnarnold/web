@@ -1,28 +1,9 @@
 .section {
   border-top: solid 1px rgba(0, 0, 0, 0.1);
-  display: none;
   margin: 40px 0;
 
   &:first-of-type {
     border-top: 0;
-  }
-
-  .show-creation & {
-    &.is-creation {
-      display: block;
-    }
-  }
-
-  .show-management & {
-    &.is-management {
-      display: block;
-    }
-  }
-
-  .show-dev & {
-    &.is-dev {
-      display: block;
-    }
   }
 }
 

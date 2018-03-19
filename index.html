@@ -24,15 +24,25 @@
   <!-- CSS -->
   <link rel="stylesheet" href="./assets/css/main.css?v=20170531T161228Z"/>
 </head>
-<body class="show-creation show-management show-dev">
+<body class="show-creation show-management show-dev show-web">
   <div data-page="Home">
     <form>
       <header class="main-header">
         <div class="wrapper">
-          <h1>Projet web | Informations</h1><br>
+          <h1>Projet web | Guide</h1><br>
+          Quelle est votre type de projet&thinsp;?
+
+          <nav class="role">
+            <input type="checkbox" id="webCb" class="js-set-role" data-role="web" checked>
+            <label for="webCb">Web</label>
+
+            <input type="checkbox" id="appCb" class="js-set-role" data-role="app">
+            <label for="appCb">App</label>
+          </nav><br>
+
           Quelle est votre rôle&thinsp;?
 
-          <span class="role">
+          <nav class="role">
             <input type="checkbox" id="designUxCb" class="js-set-role" data-role="creation" checked>
             <label for="creationCb">Creation</label>
 
@@ -59,6 +69,7 @@
           <ol>
             <li>Approbation finale des maquettes</li>
             <li>Début du développement</li>
+            <li>Product review <em>(Est-ce que ce qui est développé correspond au besoin&thinsp;?)</em></li>
             <li>Période de stabilisation</li>
             <li>Soft launch</li>
             <li>Hard launch</li>
@@ -111,6 +122,7 @@
           </h3>
           <ul>
             <li>Quelles langues seront <strong>supportées</strong>&thinsp;?</li>
+            <li>Quelle est la <strong>langue par défaut</strong>&thinsp;? Est-elle lié à la <strong>langue du navigateur</strong> à la localisation de l'usager, etc&thinsp;?</li>
             <li>Quel doit-être le comportement si une <strong>page n'est pas disponible dans la langue</strong> de l'usager&thinsp;? <em>(Afficher celle par défaut, le rediriger sur la page d'accueil&thinsp;?)</em></li>
             <li>Si la page est disponible dans la langue de l'usager <em>(ex: espagnole)</em>, mais n'est <strong>pas entièrement traduite</strong>, désires t'on afficher les champs manquants dans la langue par défaut <em>(ex: anglais)</em> ou les masquer&thinsp;?</li>
           </ul>
@@ -130,15 +142,11 @@
           <h3>
             <a href="#accessibilite">Accessibilité</a>
           </h3>
-          <p>Est-ce que le site doit-être <a href="https://www.w3.org/TR/WCAG/">accessible</a>&thinsp;?<br><em>(Le marché ontarien exige le niveau A, le marché américain un hybride entre A ET AA)</em></p>
-          <h4 id="accessibilite-niveaux">
-            <a href="#accessibilite-niveaux">Niveaux</a>
-          </h4>
-          <p>Quel niveau d'accessibilité est requis: <strong>A, AA, AAA</strong>&thinsp;?</p>
-          <h4 id="accessibilite-audit">
-            <a href="#accessibilite-audit">Audit</a>
-          </h4>
-          <p>Qui validera que l'accessibilité est bien respecté&thinsp;?</p>
+          <ul>
+            <li>Est-ce que le site doit-être <a href="https://www.w3.org/TR/WCAG/">accessible</a>&thinsp;?<br><em>(Le marché ontarien exige le niveau A, le marché américain un hybride entre A ET AA)</em></li>
+            <li>Quel niveau d'accessibilité est requis: <strong>A, AA, AAA</strong>&thinsp;?</li>
+            <li>Y aura t-il un <strong>audit</strong> pour valider que l'accessibilité est bien respectée <em>(Firme externe, outil en ligne, etc)</em>&thinsp;?</li>
+          </ul>
         </section>
 
         <section class="section is-management is-dev" id="tiers-parties">
@@ -168,13 +176,35 @@
             <a href="#500">500</a>
           </h4>
           <p>Notre <strong>serveur ne répond plus</strong> <em>(Pas de menu et cette page doit-être multilingue)</em>.</p>
+
+          <h4 id="page-de-maintenance">
+            <a href="#page-de-maintenance">Maintenance</a>
+          </h4>
+          <p>Désirons-nous avoir une page indiquant que le site est temporairement indisponible du à une <strong>opération de maintenance</strong>&thinsp;?</p>
+
+          <div class="is-app">
+            <h4 id="page-de-chargement">
+              <a href="#page-de-chargement">Page de chargement/splash</a>
+            </h4>
+            <p>Désirons-nous avoir une page de <strong>chargement au lancement</strong> de l'application&thinsp;?</p>
+
+            <h4 id="page-hors-ligne">
+              <a href="#page-hors-ligne">Page hors-ligne</a>
+            </h4>
+            <p>Désirons-nous avoir une page indiquant à l'utilisateur qu'il est <strong>hors-ligne</strong>&thinsp;?</p>
+          </div>
         </section>
 
         <section class="section is-management" id="entree-contenu">
           <h3>
             <a href="#entree-contenu">Contenu</a>
           </h3>
-          <p>Qui fera <strong>l'entrée de contenu</strong> sur le site&thinsp;?</p>
+          <ul>
+            <li><strong>Qui</strong> se chargera de fairel'<strong>entrée de contenu</strong>&thinsp;?</li>
+            <li><strong>Quand</strong> sera faite l'entrée de contenu&thinsp;? <em>Prévoir un minimum de contenu réel pour le QA.</em></li>
+            <li><strong>Prévoir pour le pire</strong> <em>(Entré du contenu dans la langue la plus longue, ex Fr vs En)</em>.</li>
+          </ul>
+          <p></p>
         </section>
 
       </div>
@@ -204,11 +234,11 @@
             <a href="#styles-liens">Liens</a>
           </h3>
           <ul>
-            <li>Quel sera l'aspect des liens au <strong>survole</strong> <em>(traditionellement bleu)</em>&thinsp;?</li>
-            <li>Est-ce qu'une <strong>animation</strong> existe entre l'état normal et l'état de survole&thinsp;?</li>
+            <li>Quel sera l'aspect des liens au <strong>survol/hover</strong> <em>(traditionellement bleu)</em>&thinsp;?</li>
+            <li>Est-ce qu'une <strong>animation</strong> existe entre l'état normal et l'état de survole&thinsp;? <em>(Prévoir que si il y a une animation au survol/hover, elle ne sera pas disponible en mobile)</em>.</li>
             <li>Faut-il prévoir un style pour les liens qui ont déjà étés <strong>visités</strong> <em>(traditionellement mauve)</em>.</li>
             <li>Est-ce que les <strong>liens externes</strong> auront une icône montrant qu'ils pointent hors du site&thinsp;?</li>
-            <li>Est-ce que les liens pointant vers des <strong>fichiers</strong> auront des icônes les illustrants&thinsp;?</li>
+            <li>Est-ce que les liens pointant vers des <strong>fichiers</strong> auront des icônes les illustrants&thinsp; <em>(Downloadable)</em>?</li>
           </ul>
         </section>
 
@@ -219,6 +249,8 @@
           <ul>
             <li>Quel sera l'aspect des boutons au <strong>survole</strong>&thinsp;?</li>
             <li>Avons-nous un style de prévu si le bouton est <strong>désactivé</strong>&thinsp;?</li>
+            <li>Si nos boutons sont de couleur grise, est-ce que l'usager rique de les confondre avec des boutons désactivés&thinsp;?</li>
+            <li>Affichont nous les boutons désactivé en mobile ou devons nous les masquer&thinsp;?</li>
             <li>Que ce passe t-il si le <strong>texte est trop long</strong> pour le bouton&thinsp;? Tombe t'il sur 2 lignes&thinsp;?</li>
           </ul>
         </section>
@@ -233,6 +265,8 @@
           <a href="#composantes">Composantes</a>
         </h2>
 
+        <p>Une composante devrait toujours être pensée <strong>mobile first</strong> afin d'identifier ses fonctionnalités clés et simplifier sont développement. <em>(Par exemple une tuile en mobile pourrait focuser sur la base image/titre/description et offrir une expérience plus riche en desktop, ex: un choix de couleur, un aperçu plus détaillé au survole, etc).</em></p>
+
         <section class="section is-creation is-management is-dev" id="composantes-header">
           <h3>
             <a href="#composantes-header">Header</a>
@@ -241,8 +275,19 @@
             <li>Est-ce que le header est <strong>fixe au top</strong> de la page <em>(en mobile et en desktop ou seulement un des 2)</em>&thinsp;?</li>
             <li>Est-ce, que le header <strong>apparait et disparait</strong> en fonction de la <strong>direction</strong> dans laquelle l'usager <strong>scroll</strong>&thinsp;?</li>
             <li>À quel <em><a href="#breakpoints">"Breakpoint"</a></em> le menu est-il remplacer par le <strong>Burger button</strong>&thinsp;?</li>
+            <li>Est-ce que certains éléments sont ajoutés ou retirés du menu en version mobile&thinsp;?</li>
             <li>Est-ce qu'il y a une <strong>animation d'ouverture du menu sous-mobile</strong> ou ouvre t'il de façon standard à gauche&thinsp;? <em>(ex: <a href="https://treize.pro/">animation</a>)</em></li>
             <li>Y a t'il des <strong>sous-menus</strong>&thinsp;? Si oui, comment s'ouvent-ils&thinsp;? <em>(N'oubliez pas que le survole ne fonctionne pas sur les appareils mobiles)</em></li>
+          </ul>
+        </section>
+
+        <section class="section is-creation is-management is-dev" id="composantes-footer">
+          <h3>
+            <a href="#composantes-footer">Footer</a>
+          </h3>
+          <ul>
+            <li>Est-ce que le footer contiendra un <strong>sitemap</strong>&thinsp;?</li>
+            <li>Contient t'il des liens vers les réseaux sociaux&thinsp;?</li>
           </ul>
         </section>
 
@@ -255,7 +300,7 @@
           </h4>
           <ul>
             <li><strong>Apparait</strong> après une action <em>(ex: clique sur une loupe)</em> ou est-elle déjà dans le header&thinsp;?</li>
-            <li>Si la barre de recherche apparait, quelle est son animation&thinsp;?</li>
+            <li>Si la barre de recherche apparait, quelle est son animation&thinsp;? <em>(Avons nous un site de référence)</em></li>
             <li>Contient-elle un <strong>bouton de recherche</strong> <em>(Search)</em> ou est elle déclencher par un <em>"Enter"</em>&thinsp;? <em>(Il est conseillé d'avoir un bouton pour des raisons d'accessibilité)</em>.</li>
             <li>Y a t'il un bouton d'<strong>effacement rapide</strong> <em>(Clear ou X)</em> permettant d'effacer le terme actuellement entré&thinsp;? <em>(Ces boutons sont surtout pratique en mobile.)</em></li>
             <li>Si la barre de recherche apparait, quel est le moyen de la <strong>fermer</strong> et est-ce facile de le différencier du bouton d'effacement <em>(Clear ou X)</em> <em>(Si il est présent)</em>&thinsp;?</li>
@@ -304,6 +349,7 @@
             <li>Est-ce qu'une <strong>description</strong> peut être ajoutée&thinsp;?</li>
             <li>Est-ce que la description peut contenir du <strong>HTML</strong>&thinsp;? <em>(Ex: balise sup, gras, italique, etc).</em></li>
             <li>Est-ce que la description peut être <strong>tronquée</strong>, si oui après quelle longueur&thinsp;?</li>
+            <li>Est-ce que l'éditeur peut choisir parmis différentes fontes, tailles, couleurs, etc&thinsp;? <em>(Souvenez-vous que plus d'options = plus de flexibilité, mais moins de cohérence visuelle)</em>.</li>
           </ul>
         </section>
 
@@ -326,7 +372,7 @@
             <a href="#composantes-tuile-media">Media</a>
           </h4>
           <ul>
-            <li>Est-ce seulement une <strong>image</strong> ou est-ce qu'une <strong>vidéo</strong> peut être utilisée&thinsp;?</li>
+            <li>Est-ce seulement une <strong>image</strong> ou est-ce qu'un <strong>vidéo/gif animé</strong> peut être utilisé&thinsp;?</li>
             <li>Quel est le <strong>ratio</strong> souhaité&thinsp;?</li>
             <li><strong>Forçons-nous le ratio</strong> <em>(Évite les erreurs humaines, assure une meilleur cohérence visuelle entre les tuiles, mais implique que certaines parties de l'image entrée puissent êtres masquées si l'image n'est pas dans le bon ratio).</em></li>
             <li>Au <strong>survole</strong>, affichons nous la même <strong>image/vidéo</strong>&thinsp;?</li>
@@ -357,6 +403,23 @@
           </h4>
           <ul>
             <li>Doit-il ouvrir dans un <strong>nouvel onglet</strong>&thinsp;?</li>
+          </ul>
+        </section>
+
+        <section class="section is-creation is-management is-dev" id="composantes-carousel">
+          <h3>
+            <a href="#composantes-carousel">Carousel</a>
+          </h3>
+          <ul>
+            <li>Est-ce qu'un carousel est réellement la <a href="http://shouldiuseacarousel.com/">meilleure solution</a> à notre besoin&thinsp;?</li>
+            <li>Quel est le <strong>nombre d'items affichés en même temps</strong>&thinsp;?</li>
+            <li>Est-ce que le nombre d'items affichés varie en fonction de nos <strong>breakpoints</strong> <em>(Si le nombre est plus que 1, il devrait)</em>&thinsp;?</li>
+            <li>Est-ce que le carousel tourne à l'<strong>infini</strong>&thinsp;?</li>
+            <li>Est-ce que le carousel <strong>tourne automatiquement</strong> <em>(Autoplay)</em>&thinsp;?</li>
+            <li>Quelle est la <strong>transition</strong> souhaitée <em>(translation de gauche à droite, fade, etc)</em>&thinsp;?</li>
+            <li><strong>Forçons-nous le ratio</strong> <em>(Évite qu'il y est beaucoup de vide lorsque les hauteurs sont disparates)</em>&thinsp;?</li>
+            <li>Affichons-nous des <strong>flèches</strong> et sont elles présentes dans tous les breakpoints&thinsp;?</li>
+            <li>Affichons-nous une <strong>liste de points</strong> indiquant l'item courant&thinsp;?</li>
           </ul>
         </section>
 
