@@ -4,9 +4,9 @@ const browserSync = require('browser-sync');
 let browserSyncTask = function () {
   browserSync.init({
     open: false,
-    // proxy: "dev.local",
+    // proxy: 'dev.local',
     server: {
-      baseDir: '../'
+      baseDir: '../',
     },
   });
 };

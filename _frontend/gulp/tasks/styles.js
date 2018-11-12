@@ -19,7 +19,7 @@ let paths = {
 let stylesTask = function () {
   return gulp.src(paths.src)
     .on('error', handleErrors)
-    .pipe(plumber())
+    .pipe(gulpif(!global.production, plumber()))
     .pipe(gulpif(!global.production, sourcemaps.init()))
     .pipe(sassGlob())
     .pipe(sass({'indentedSyntax': false}))

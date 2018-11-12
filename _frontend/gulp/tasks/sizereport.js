@@ -1,6 +1,6 @@
 const gulp       = require('gulp');
-const sizereport = require('gulp-sizereport');
 const path       = require('path');
+const sizereport = require('gulp-sizereport');
 
 let paths = {
   src: path.join(global.paths.assets.dest, '**/*'),

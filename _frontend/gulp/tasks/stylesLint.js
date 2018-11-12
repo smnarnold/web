@@ -4,7 +4,7 @@ const gulpStylelint = require('gulp-stylelint');
 const path          = require('path');
 
 let paths = {
-  src: path.join(global.paths.assets.src, 'scss/!(bootstrap|vendors)/**/*.scss'),
+  src: path.join(global.paths.assets.src, 'scss/!(vendors)/**/*.scss'),
   dest: path.join(global.paths.assets.src, 'scss'),
 };
 

@@ -1,9 +1,12 @@
 const gulp        = require('gulp');
+const colors      = require('colors/safe');
+const log         = require('fancy-log');
 const runSequence = require('run-sequence');
 
 let productionTask = function (cb) {
   global.production = true;
-  runSequence('stylesFormat', 'stylesLint', 'styles', 'scriptsFormat', 'scriptsLint', 'scripts' + global.bundler, 'cacheBreaker', cb);
+  log(`Building in '${colors.cyan(`production`)}' mode`);
+  runSequence('stylesFormat', 'stylesLint', 'styles', 'scriptsFormat', 'scriptsLint', 'scripts', 'cacheBreaker', cb);
 };
 
 gulp.task('production', productionTask);

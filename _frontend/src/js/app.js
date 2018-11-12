@@ -22,5 +22,5 @@ class Checklist {
   }
 }
 
-var checklist = new Checklist();
+let checklist = new Checklist();
 checklist.init();

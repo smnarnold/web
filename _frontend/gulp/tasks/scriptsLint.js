@@ -5,10 +5,7 @@ const handleErrors = require('../lib/handleErrors');
 const path         = require('path');
 
 let paths = {
-  src: [
-    path.join(global.paths.assets.src, 'js/**/*.js'),
-    '!node_modules/**'
-  ],
+  src: path.join(global.paths.assets.src, 'js/**/*.js'),
   dest: path.join(global.paths.assets.src, 'js'),
 };
 
