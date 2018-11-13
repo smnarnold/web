@@ -1,0 +1,21 @@
+.radio {
+  background-color: palette(grey, light);
+  padding: 0.15em;
+  border-radius: 1em;
+  text-transform: lowercase;
+  font-variant: small-caps;
+  letter-spacing: 1px;
+  margin-left: 0.75em;
+
+  input {
+    vertical-align: text-bottom;
+  }
+
+  &:first-of-type {
+    margin-left: 0;
+  }
+
+  .article:nth-child(odd) & {
+    background-color: #fff;
+  }
+}

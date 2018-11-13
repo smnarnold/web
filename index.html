@@ -63,6 +63,20 @@
             <a href="#general">Général</a>
           </h2>
 
+          <section class="section is-management is-dev" id="environements">
+            <h3>
+              <a href="#environements" class="anchor">Environnements</a>
+            </h3>
+            <ol>
+              <li><input type="url" placeholder="projet.local"> Local</li>
+              <li><input type="url" placeholder="http://projet.qa.web.sldev.net"> QA</li>
+              <li><input type="url" placeholder="http://projet.int.web.sldev.net"> INT</li>
+              <li><input type="url" placeholder="http://projet.uat.web.sldev.net"> UAT</li>
+              <li><input type="url" placeholder="http://projet.cat.web.sldev.net"> CAT</li>
+              <li><input type="url" placeholder="https://projet.com"> Prod</li>
+            </ol>
+          </section>
+
           <section class="section is-creation is-management is-dev" id="echeancier">
             <h3>
               <a href="#echeancier" class="anchor">Échéancier</a>
@@ -70,8 +84,9 @@
             <ol>
               <li><input type="date"> Approbation finale des maquettes</li>
               <li><input type="date"> Début du développement</li></li>
-              <li><input type="date"> Product review avec la création <em class="js-dont-render-in-jira">(Est-ce que ce qui est développé correspond à ce qui à été designé&thinsp;?)</em></li>
-              <li><input type="date"> Product review avec le client <em class="js-dont-render-in-jira">(Est-ce que ce qui est développé correspond au besoin&thinsp;?)</em></li>
+              <li><input type="date"> Product review avec la création <em class="js-dont-output">(Est-ce que ce qui est développé correspond à ce qui à été designé&thinsp;?)</em></li>
+              <li><input type="date"> Product review avec le client <em class="js-dont-output">(Est-ce que ce qui est développé correspond au besoin&thinsp;?)</em></li>
+              <li><input type="date"> Entrée de contenu</li>
               <li><input type="date"> Période de stabilisation</li>
               <li><input type="date"> Soft launch</li>
               <li><input type="date"> Hard launch</li>
@@ -112,7 +127,7 @@
             </ul>
           </section>
 
-          <section class="section is-creation is-dev" id="mobile">
+          <section class="section is-management is-dev" id="mobile">
             <h3>
               <a href="#mobile" class="anchor">Mobiles</a>
             </h3>
@@ -121,7 +136,7 @@
                 <img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/16/Apple-grey-icon.png" alt="Apple">
                 <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari-ios/safari-ios_16x16.png"
                   alt="Safari iOS">
-                <select class="js-dont-render-in-jira">
+                <select class="js-dont-output">
                   <option value="-4">iOS -4</option>
                   <option value="-3">iOS -3</option>
                   <option value="-2">iOS -2</option>
@@ -129,12 +144,12 @@
                   <option value="0">iOS courant</option>
                   <option value="">Non supporté</option>
                 </select>
-                <small class="js-dont-render-in-jira"><a href="https://fr.wikipedia.org/wiki/Historique_des_versions_d%27iOS">Historique des versions</a></small>
+                <small class="js-dont-output"><a href="https://fr.wikipedia.org/wiki/Historique_des_versions_d%27iOS">Historique des versions</a></small>
               </li>
               <li>
                 <img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/16/Apple-grey-icon.png" alt="Apple">
                 <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_16x16.png" alt="Chrome">
-                <select class="js-dont-render-in-jira">
+                <select class="js-dont-output">
                   <option value="-4">iOS -4</option>
                   <option value="-3">iOS -3</option>
                   <option value="-2">iOS -2</option>
@@ -146,7 +161,7 @@
               <li>
                 <img src="http://icons.iconarchive.com/icons/danleech/simple/16/android-icon.png" alt="Android">
                 <img src="http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/16/Categories-applications-internet-icon.png" alt="Internet">
-                <select class="js-dont-render-in-jira">
+                <select class="js-dont-output">
                   <option value="-4">OS -4</option>
                   <option value="-3">OS -3</option>
                   <option value="-2">OS -2</option>
@@ -158,7 +173,7 @@
               <li>
                 <img src="http://icons.iconarchive.com/icons/danleech/simple/16/android-icon.png" alt="Android">
                 <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_16x16.png" alt="Chrome">
-                <select class="js-dont-render-in-jira">
+                <select class="js-dont-output">
                   <option value="-4">OS -4</option>
                   <option value="-3">OS -3</option>
                   <option value="-2" selected>OS -2</option>
@@ -166,7 +181,7 @@
                   <option value="0">OS courant</option>
                   <option value="">Non supporté</option>
                 </select>
-                <small class="js-dont-render-in-jira"><a href="https://fr.wikipedia.org/wiki/Android#Versions">Historique des versions</a></small>
+                <small class="js-dont-output"><a href="https://fr.wikipedia.org/wiki/Android#Versions">Historique des versions</a></small>
               </li>
             </ul>
           </section>
@@ -208,7 +223,15 @@
               <a href="#impression" class="anchor">Impression</a>
             </h3>
             <ul>
-              <li>Doit-on se soucier du rendu visuel lors de l'impression&thinsp;?</li>
+              <li>
+                Le rendu des pages est
+                <label class="radio js-dont-output">
+                  <input type="radio" name="print" value="Important"> Important
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="print" value="Hors périmêtre" checked> Hors périmêtre
+                </label>
+              </li>
               <li>Si oui, doit-on supporter <strong>toutes les pages</strong>&thinsp;?</li>
             </ul>
           </section>
@@ -247,8 +270,23 @@
               <a href="#accessibilite" class="anchor">Accessibilité</a>
             </h3>
             <ul>
-              <li>Est-ce que le site doit-être <a href="https://www.w3.org/TR/WCAG/">accessible</a>&thinsp;?<br><em>(Le marché ontarien exige le niveau A, le marché américain un hybride entre A ET AA)</em></li>
-              <li>Quel niveau d'accessibilité est requis: <strong>A, AA, AAA</strong>&thinsp;?</li>
+              <li>
+                Niveau exigé
+                <label class="radio js-dont-output">
+                  <input type="radio" name="accessibility" value="Hors périmêtre" checked> Hors périmêtre
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="accessibility" value="A"> A
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="accessibility" value="AA"> AA
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="accessibility" value="AAA"> AAA
+                </label>
+                <small class="js-dont-output"> <a href="https://www.w3.org/TR/WCAG/">Voir références</a></small><br>
+                <em class="js-dont-output">(Le marché ontarien exige le niveau A. Le marché américain un hybride entre A ET AA.)</em>
+              </li>
               <li>Y aura t-il un <strong>audit</strong> pour valider que l'accessibilité est bien respectée <em>(Firme externe, outil en ligne, etc)</em>&thinsp;?</li>
             </ul>
           </section>

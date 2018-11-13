@@ -116,8 +116,14 @@ class Checklist {
 
     if (input !== null) {
       switch (input.type) {
+        case 'url':
+          html = this.getUrl(node, input);
+          break;
         case 'date':
           html = this.getDate(node, input);
+          break;
+        case 'radio':
+          html = this.getRadio(node, input);
           break;
         case 'checkbox':
           html = this.getCheckbox(node, input);
@@ -146,6 +152,29 @@ class Checklist {
     return html;
   }
 
+  getUrl(node, input) {
+    let html = '';
+    if (input.value !== '') {
+      let url = input.value;
+      if (url.startsWith('http')) {
+        url = `[${url}]`;
+      }
+
+      html = `*${this.getText(node)}*: ${url}`;
+    }
+    return html;
+  }
+
+  getRadio(node, input) {
+    let html = '';
+    let name = input.getAttribute('name');
+    let value = document.forms.jira[name].value;
+    if (value !== '') {
+      html = `${this.getText(node)}: *${value}*`;
+    }
+    return html;
+  }
+
   getCheckbox(node, input) {
     let html = '';
     if (input.checked) {
@@ -158,6 +187,7 @@ class Checklist {
     let str = node.innerHTML;
     str = this.replaceImg(str);
     str = this.stripTags(str);
+    str = str.trim(); // remove start and end whitespaces;
     str = str.replace(/\r?\n|\r/g, ''); // strip linebreaks;
     str = str.replace(/ +(?= )/g, ''); // strip multiple white spaces;
 
@@ -175,7 +205,7 @@ class Checklist {
   stripTags(str) {
     let el = document.createElement('div');
     el.innerHTML = str;
-    el.querySelectorAll('.js-dont-render-in-jira').forEach(e => e.parentNode.removeChild(e));
+    el.querySelectorAll('.js-dont-output').forEach(e => e.parentNode.removeChild(e));
     str = el.innerText;
     return str;
   }
