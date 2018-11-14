@@ -17,13 +17,13 @@
     background-color: palette(grey, medium);
   }
 
-  &.btn--jira {
+  &.btn--centered {
     display: block;
     margin: 0.5em auto;
     padding: 0.5em 0.75em;
   }
 
-  .article:nth-child(odd) & {
+  .article:nth-child(even) & {
     background-color: #fff;
 
     &:hover {

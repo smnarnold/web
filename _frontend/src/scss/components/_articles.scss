@@ -1,7 +1,7 @@
 .article {
   padding: 5.5em 0;
 
-  &:nth-child(odd) {
+  &:nth-child(even) {
     background-color: palette(grey, light);
   }
 

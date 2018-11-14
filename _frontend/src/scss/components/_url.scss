@@ -1,3 +1,11 @@
 input[type='url'] {
-  min-width: 300px;
+  width: 200px;
+  padding: 0.15em 0.5em;
+}
+
+@media (min-width: 576px) {
+  input[type='url'] {
+    width: auto;
+    min-width: 300px;
+  }
 }

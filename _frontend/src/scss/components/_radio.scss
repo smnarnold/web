@@ -1,14 +1,15 @@
 .radio {
+  display: block;
   background-color: palette(grey, light);
   padding: 0.15em 0.5em;
   border-radius: 1em;
   text-transform: lowercase;
   font-variant: small-caps;
   letter-spacing: 1px;
-  margin-right: 0.35em;
   user-select: none;
   cursor: pointer;
   white-space: nowrap;
+  margin: 0.25em 0;
   transition: background-color $s, color $s;
 
   input {
@@ -16,21 +17,28 @@
     cursor: pointer;
   }
 
-  &:last-of-type {
-    margin-right: 0;
-  }
-
   &:hover {
     color: #fff;
     background-color: palette(grey, medium);
   }
 
-  .article:nth-child(odd) & {
+  .article:nth-child(even) & {
     background-color: #fff;
 
     &:hover {
       color: #fff;
       background-color: palette(grey, medium);
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .radio {
+    display: inline-block;
+    margin: 0 0.35em 0 0;
+
+    &:last-of-type {
+      margin-right: 0;
     }
   }
 }

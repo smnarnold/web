@@ -2,26 +2,42 @@ class Checklist {
   constructor() {
     this.dom = {
       cbRole: document.querySelectorAll('.js-set-role'),
-      articles: document.querySelectorAll('.js-jira'),
+      articles: document.querySelectorAll('.js-article'),
       sections: document.querySelectorAll('.section'),
       toggles: document.querySelectorAll('[data-toggle-ref]'),
-      togglesT: document.querySelectorAll('[data-toggle-refs]'),
-      submit: document.forms.jira.submit,
-      output: document.forms.jira.output,
+      subs: document.querySelectorAll('input[type="submit"]'),
       generalCopy: document.querySelector('.general-copy')
     };
   }
 
   init() {
+    this.dom.toggles.forEach(toggle => this.initElementToggled(toggle));
     this.bindEvents();
   }
 
   bindEvents() {
-    this.dom.cbRole.forEach(cbRole => {
-      cbRole.addEventListener('change', e => this.setRole(e));
-    });
-    this.dom.toggles.forEach(toggle => this.initToggle(toggle));
-    this.dom.submit.addEventListener('click', e => this.setJira(e));
+    this.dom.cbRole.forEach(cbRole =>
+      cbRole.addEventListener('change', e => this.setRole(e))
+    );
+    this.dom.subs.forEach(sub =>
+      sub.addEventListener('click', e => this.initForm(e))
+    );
+  }
+
+  initForm(e) {
+    e.preventDefault();
+    let submit = e.target;
+    let form = submit.closest('form');
+    let copiedMsg = form.querySelector('.copied-msg');
+    let output = form.output;
+
+    let html = this.getArticles(form);
+    this.copyStringToClipboard(html);
+    output.value = html;
+    copiedMsg.classList.add('flipin');
+    copiedMsg.addEventListener('animationend', () =>
+      copiedMsg.classList.remove('flipin')
+    );
   }
 
   setRole(e) {
@@ -30,119 +46,105 @@ class Checklist {
     document.body.classList.toggle(`show-${role}`, e.target.checked);
   }
 
-  getNode(selector) {
+  getNode(selector, form) {
     if (selector.startsWith('.') || selector.startsWith('#')) {
-      return document.forms.jira.querySelectorAll(selector);
+      return form.querySelectorAll(selector);
     } else {
-      return document.forms.jira[selector];
+      return form[selector];
     }
   }
 
-  initToggle(toggle) {
-    let inputName = toggle.getAttribute('data-toggle-ref');
-    let inputs = this.getNode(inputName);
-    let isArr = inputs.length;
-    if (!isArr) inputs = [inputs];
-    let type = inputs[0].type;
+  initElementToggled(element) {
+    let context = element.closest('form');
+    let selector = element.getAttribute('data-toggle-ref');
+    let inputsArr = this.getNode(selector, context);
+    if (!inputsArr.length) inputsArr = [inputsArr]; // Force inputs to be an array even if there is only 1 value
+    let type = inputsArr[0].type; // radio, checkbox, etc.
 
-    if (type === 'radio') {
-      let value = toggle.getAttribute('data-toggle-visible');
+    switch(type) {
+      case 'radio':
+        this.initElementToggledByRadio(element, inputsArr);
+        break;
+      case 'checkbox':
+        this.initElementToggledByCheckbox(element, inputsArr);
+        break;
+    }
+  }
 
-      if (value !== null) {
-        value = value.split('||');
-      }
+  getAcceptableRadiosValues(element) {
+    let str = element.getAttribute('data-toggle-visible');
+    let arr = str === null ? [] : str.split('||');
 
-      for (let x = 0; x < inputs.length; x++) {
-        let input = inputs[x];
+    return arr;
+  }
 
-        this.setToggleRadio(toggle, input, value);
-        input.addEventListener('change', () =>
-          this.setToggleRadio(toggle, input, value)
+  initElementToggledByRadio(element, radiosArr) {
+    let acceptableRadiosValuesArr = this.getAcceptableRadiosValues(element);
+
+    for (let x = 0; x < radiosArr.length; x++) {
+      let radio = radiosArr[x];
+
+      this.setElementToggledByRadioVisibility(element, radio, acceptableRadiosValuesArr);
+      radio.addEventListener('change', () =>
+        this.setElementToggledByRadioVisibility(element, radio, acceptableRadiosValuesArr)
+      );
+    }
+  }
+
+  setElementToggledByRadioVisibility(element, radio, acceptableRadiosValuesArr) {
+    let shouldBeVisible = radio.checked && acceptableRadiosValuesArr.indexOf(radio.value) !== -1;
+    element.style.display = shouldBeVisible ? '' : 'none';
+  }
+
+  initElementToggledByCheckbox(element, checkboxesArr) {
+    let min = element.getAttribute('data-toggle-min');
+
+    if (min !== null) {
+      this.setElementToggledByCheckboxMinVisibility(element, checkboxesArr, min);
+
+      for (let x = 0; x < checkboxesArr.length; x++) {
+        let checkbox = checkboxesArr[x];
+
+        checkbox.addEventListener('change', () =>
+          this.setElementToggledByCheckboxMinVisibility(element, checkboxesArr, min)
         );
       }
-    } else if (type === 'checkbox') {
-      let min = toggle.getAttribute('data-toggle-min');
+    } else {
+      for (let x = 0; x < checkboxesArr.length; x++) {
+        let checkbox = checkboxesArr[x];
 
-      if (min !== null) {
-        this.setToggleMinCheckbox(toggle, inputs, min);
-
-        for (let x = 0; x < inputs.length; x++) {
-          let input = inputs[x];
-          input.addEventListener('change', () =>
-            this.setToggleMinCheckbox(toggle, inputs, min)
-          );
-        }
-      } else {
-        for (let x = 0; x < inputs.length; x++) {
-          let input = inputs[x];
-
-          this.setToggleCheckbox(toggle, input);
-          input.addEventListener('change', () =>
-            this.setToggleCheckbox(toggle, input)
-          );
-        }
+        this.setElementToggledByCheckboxVisibility(element, checkbox);
+        checkbox.addEventListener('change', () =>
+          this.setElementToggledByCheckboxVisibility(element, checkbox)
+        );
       }
     }
   }
 
-  setToggleRadio(toggle, input, value) {
-    if (input.checked && value.indexOf(input.value) !== -1) {
-      toggle.style.display = '';
-      toggle.classList.remove('js-dont-output');
-    } else {
-      toggle.style.display = 'none';
-      toggle.classList.add('js-dont-output');
-    }
+  setElementToggledByCheckboxVisibility(element, checkbox) {
+    element.style.display = checkbox.checked ? '' : 'none';
   }
 
-  setToggleMinCheckbox(toggle, inputs, min) {
+  setElementToggledByCheckboxMinVisibility(element, checkboxesArr, min) {
     let nbrChecked = 0;
 
-    for (let x = 0; x < inputs.length; x++) {
-      if (inputs[x].checked) nbrChecked++;
+    for (let x = 0; x < checkboxesArr.length; x++) {
+      if (checkboxesArr[x].checked) nbrChecked++;
     }
 
-    if (nbrChecked >= parseInt(min)) {
-      toggle.style.display = '';
-      toggle.classList.remove('js-dont-output');
-    } else {
-      toggle.style.display = 'none';
-      toggle.classList.add('js-dont-output');
-    }
+    let shouldBeVisible = nbrChecked >= parseInt(min);
+    element.style.display = shouldBeVisible ? '' : 'none';
   }
 
-  setToggleCheckbox(toggle, input) {
-    if (input.checked) {
-      toggle.style.display = '';
-      toggle.classList.remove('js-dont-output');
-    } else {
-      toggle.style.display = 'none';
-      toggle.classList.add('js-dont-output');
-    }
-  }
-
-  setJira(e) {
-    e.preventDefault();
-    let html = this.getArticles();
-    this.copyStringToClipboard(html);
-    this.dom.output.value = html;
-    this.dom.generalCopy.classList.add('flipin');
-    this.dom.generalCopy.addEventListener('animationend', () => this.dom.generalCopy.classList.remove('flipin'))
-  }
-
-  getArticles() {
+  getArticles(form) {
     let html = '';
+    let content = this.getSections(form);
 
-    for (let x = 0; x < this.dom.articles.length; x++) {
-      let article = this.dom.articles[x];
-      let content = this.getSections(article);
-
-      if (content !== '') {
-        let title = article.querySelector('h2').innerText;
-        html += `h2. ${title}\n`;
-        html += content;
-        html += '\n----';
-      }
+    if (content !== '') {
+      let title = form.querySelector('h2').innerText;
+      html += `h2. ${title}\n`;
+      html += content;
+      html += '\n----';
     }
 
     return html;
@@ -162,10 +164,15 @@ class Checklist {
       }
 
       if (content !== '') {
-        let title = section.querySelector('h3').innerText;
-        if (title !== '') {
-          html += `h3. ${title}\n`;
+        let title = '';
+        let h3 = section.querySelector('h3');
+        if (h3 !== null) {
+          title = h3.innerText;
+          if (title !== '') {
+            html += `h3. ${title}\n`;
+          }
         }
+
         html += `${content}\n\n`;
       }
     }
@@ -288,7 +295,8 @@ class Checklist {
   getRadio(node, input) {
     let html = '';
     let name = input.getAttribute('name');
-    let value = document.forms.jira[name].value;
+    let form = input.closest('form');
+    let value = this.getNode(name, form).value;
     if (value !== '') {
       let prefix = this.getText(node);
       if (prefix !== '') prefix += ': ';
