@@ -1,0 +1,18 @@
+.tip {
+  display: block;
+  background-color: palette(blue, light);
+  border: solid 1px palette(blue, medium);
+  min-width: 300px;
+  width: max-content;
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.3rem;
+  font-style: normal;
+  padding: 0.15em 0.5em;
+  margin: 0.5em 0;
+
+  &.tip--yellow {
+    background-color: palette(yellow, light);
+    border: solid 1px palette(yellow, base);
+  }
+}

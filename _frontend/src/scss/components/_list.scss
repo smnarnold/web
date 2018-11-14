@@ -1,0 +1,8 @@
+ul,
+ol {
+  li {
+    &:only-child {
+      list-style: none;
+    }
+  }
+}

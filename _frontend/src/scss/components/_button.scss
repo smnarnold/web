@@ -1,28 +1,26 @@
-.radio {
-  background-color: palette(grey, light);
-  padding: 0.15em 0.5em;
+.btn {
+  @extend %reset-button;
+
+  display: inline-block;
+  font-size: 1.6rem;
   border-radius: 1em;
   text-transform: lowercase;
   font-variant: small-caps;
   letter-spacing: 1px;
-  margin-right: 0.35em;
   user-select: none;
-  cursor: pointer;
-  white-space: nowrap;
+  background-color: palette(grey, light);
+  padding: 0.15em;
   transition: background-color $s, color $s;
-
-  input {
-    vertical-align: text-bottom;
-    cursor: pointer;
-  }
-
-  &:last-of-type {
-    margin-right: 0;
-  }
 
   &:hover {
     color: #fff;
     background-color: palette(grey, medium);
+  }
+
+  &.btn--jira {
+    display: block;
+    margin: 0.5em auto;
+    padding: 0.5em 0.75em;
   }
 
   .article:nth-child(odd) & {

@@ -22,7 +22,15 @@ a {
 
 ol,
 ul {
-  padding-left: 2rem;
+  padding-left: 0;
+}
+
+li {
+  margin: 0.25em 0;
+}
+
+::placeholder {
+  opacity: 0.5;
 }
 
 .is-creation,
@@ -33,32 +41,10 @@ ul {
   display: none;
 }
 
-.show-creation {
-  .is-creation {
-    display: block;
-  }
-}
-
-.show-management {
-  .is-management {
-    display: block;
-  }
-}
-
-.show-dev {
-  .is-dev {
-    display: block;
-  }
-}
-
-.show-web {
-  .is-web {
-    display: block;
-  }
-}
-
-.show-app {
-  .is-app {
-    display: block;
-  }
+.show-creation .is-creation,
+.show-management .is-management,
+.show-dev .is-dev,
+.show-web .is-web,
+.show-app .is-app {
+  display: initial;
 }

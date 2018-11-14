@@ -63,20 +63,6 @@
             <a href="#general">Général</a>
           </h2>
 
-          <section class="section is-management is-dev" id="environements">
-            <h3>
-              <a href="#environements" class="anchor">Environnements</a>
-            </h3>
-            <ol>
-              <li><input type="url" placeholder="projet.local"> Local</li>
-              <li><input type="url" placeholder="http://projet.qa.web.sldev.net"> QA</li>
-              <li><input type="url" placeholder="http://projet.int.web.sldev.net"> INT</li>
-              <li><input type="url" placeholder="http://projet.uat.web.sldev.net"> UAT</li>
-              <li><input type="url" placeholder="http://projet.cat.web.sldev.net"> CAT</li>
-              <li><input type="url" placeholder="https://projet.com"> Prod</li>
-            </ol>
-          </section>
-
           <section class="section is-creation is-management is-dev" id="echeancier">
             <h3>
               <a href="#echeancier" class="anchor">Échéancier</a>
@@ -86,12 +72,73 @@
               <li><input type="date"> Début du développement</li></li>
               <li><input type="date"> Product review avec la création <em class="js-dont-output">(Est-ce que ce qui est développé correspond à ce qui à été designé&thinsp;?)</em></li>
               <li><input type="date"> Product review avec le client <em class="js-dont-output">(Est-ce que ce qui est développé correspond au besoin&thinsp;?)</em></li>
-              <li><input type="date"> Entrée de contenu</li>
+              <li><input type="date"> Entrée de contenu <em class="tip js-dont-output">Qui s'en chargera&thinsp;?</em> <em class="tip js-dont-output"><strong>Prévoir pour le pire</strong>. Entrez du contenu dans la langue la plus longue, ex Fr vs En</em></li>
               <li><input type="date"> Période de stabilisation</li>
               <li><input type="date"> Soft launch</li>
               <li><input type="date"> Hard launch</li>
               <li><input type="date"> Fin de la période de garantie</li>
             </ol>
+          </section>
+
+          <section class="section is-management is-dev" id="langues-supportes">
+            <h3>
+              <a href="#langues-supportes" class="anchor">Langues supportés</a>
+            </h3>
+            <ul>
+              <li>
+                <input type="checkbox" class="cbLang" checked> Français <span class="js-dont-output">(fr)</span>
+              </li>
+              <li>
+                <input type="checkbox" class="cbLang"> Anglais <span class="js-dont-output">(en)</span>
+              </li>
+              <li>
+                <input type="checkbox" class="cbLang"> Espagnole <span class="js-dont-output">(es)</span>
+              </li>
+              <li>
+                <input type="checkbox" name="langues" class="cbLang"> Autre(s)
+              </li>
+              <li data-toggle-ref="langues">
+                <textarea rows="1"></textarea>
+                <em class="tip tip--yellow js-dont-output">(Les séparés par une "," si il y en
+                  a plusieurs)</em>
+              </li>
+            </ul>
+          </section>
+
+          <section class="section is-management is-dev" id="language-par-defaut" data-toggle-ref=".cbLang" data-toggle-min="2">
+            <h3>
+              <a href="#language-par-defaut" class="anchor">Langue par défaut</a>
+            </h3>
+            <ul>
+              <li>
+                Est
+                <label class="radio js-dont-output">
+                  <input type="radio" name="langue-defaut" value="lié à la géolocalisation de l'usager"> lié à la <strong>géolocalisation</strong>
+                  de l'usager
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="langue-defaut" value="lié à la langue du navigateur"> lié à la <strong>langue du
+                    navigateur</strong>
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="langue-defaut" value="forcé en" checked> forcé en
+                </label>
+              </li>
+              <li data-toggle-ref="langue-defaut" data-toggle-visible="forcé en">
+                <textarea rows="1" placeholder="Français"></textarea>
+              </li>
+              <li data-toggle-ref="langue-defaut" data-toggle-visible="lié à la géolocalisation de l'usager||lié à la langue du navigateur">
+                Si une <strong>page n'est pas disponible dans la langue</strong> de
+                l'usager<br>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fallback-langue" value="Afficher celle par défaut" checked> Afficher celle par défaut</strong>
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fallback-langue" value="Rediriger sur la page d'accueil"> Rediriger sur la page
+                  d'accueil
+                </label>
+              </li>
+            </ul>
           </section>
 
           <section class="section is-management is-dev" id="navigateurs">
@@ -118,11 +165,11 @@
                 <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_16x16.png" alt="Edge"> <em>(Dernière
                   version -1)</em>
               </li>
-              <li><input type="checkbox" checked><img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/16/Internet-Explorer-icon.png" alt="Internet Explorer 11"> 11</li>
-              <li><input type="checkbox"><img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/16/Internet-Explorer-icon.png" alt="Internet Explorer 11"> 10</li>
-              <li><input type="checkbox"><img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/16/Internet-Explorer-icon.png" alt="Internet Explorer 11"> 9</li>
-              <li><input type="checkbox"><img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/16/Internet-Explorer-icon.png" alt="Internet Explorer 11"> 8</li>
-              <li><input type="checkbox"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_16x16.png" alt="Opera"> <em>(Dernière
+              <li><input type="checkbox" checked> <img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/16/Internet-Explorer-icon.png" alt="Internet Explorer 11"> 11</li>
+              <li><input type="checkbox"> <img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/16/Internet-Explorer-icon.png" alt="Internet Explorer 11"> 10</li>
+              <li><input type="checkbox"> <img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/16/Internet-Explorer-icon.png" alt="Internet Explorer 11"> 9</li>
+              <li><input type="checkbox"> <img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/16/Internet-Explorer-icon.png" alt="Internet Explorer 11"> 8</li>
+              <li><input type="checkbox"> <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_16x16.png" alt="Opera"> <em>(Dernière
                 version -1)</em></li>
             </ul>
           </section>
@@ -186,82 +233,26 @@
             </ul>
           </section>
 
-          <section class="section is-creation is-dev" id="grille">
-            <h3>
-              <a href="#grille" class="anchor">Grille</a>
-            </h3>
-            <p>La grille utilisé par défaut est celle de <a href="https://getbootstrap.com/docs/4.0/layout/grid/">Bootstrap 4</a>, qui possède <strong>12 colonnes</strong>.</p>
-          </section>
-
-          <section class="section is-creation is-dev" id="breakpoints">
-            <h3>
-              <a href="#breakpoints" class="anchor">Breakpoints</a>
-            </h3>
-            <p>Tiré de <a href="https://getbootstrap.com/docs/4.0/layout/overview/#responsive-breakpoints">Bootstrap 4</a>.</p>
-            <table>
-              <tr>
-                <th>SM</th>
-                <td>576px</td>
-              </tr>
-              <tr>
-                <th>MD</th>
-                <td>768px</td>
-              </tr>
-              <tr>
-                <th>LG</th>
-                <td>992px</td>
-              </tr>
-              <tr>
-                <th>XL</th>
-                <td>1200px</td>
-              </tr>
-            </table>
-          </section>
-
-          <section class="section is-management" id="impression">
-            <h3>
-              <a href="#impression" class="anchor">Impression</a>
-            </h3>
-            <ul>
-              <li>
-                Le rendu des pages est
-                <label class="radio js-dont-output">
-                  <input type="radio" name="print" value="Important"> Important
-                </label>
-                <label class="radio js-dont-output">
-                  <input type="radio" name="print" value="Hors périmêtre" checked> Hors périmêtre
-                </label>
-              </li>
-              <li>Si oui, doit-on supporter <strong>toutes les pages</strong>&thinsp;?</li>
-            </ul>
-          </section>
-
           <section class="section is-creation is-management" id="fontes">
             <h3>
               <a href="#fontes" class="anchor">Fontes</a>
             </h3>
-            <p>Avons nous la <strong>license web</strong> des fontes que nous désirons utiliser&thinsp;?</p>
-          </section>
-
-          <section class="section is-management is-dev" id="language">
-            <h3>
-              <a href="#language" class="anchor">Language</a>
-            </h3>
             <ul>
-              <li>Quelles langues seront <strong>supportées</strong>&thinsp;?</li>
-              <li>Quelle est la <strong>langue par défaut</strong>&thinsp;? Est-elle lié à la <strong>langue du navigateur</strong> à la localisation de l'usager, etc&thinsp;?</li>
-              <li>Quel doit-être le comportement si une <strong>page n'est pas disponible dans la langue</strong> de l'usager&thinsp;? <em>(Afficher celle par défaut, le rediriger sur la page d'accueil&thinsp;?)</em></li>
-              <li>Si la page est disponible dans la langue de l'usager <em>(ex: espagnole)</em>, mais n'est <strong>pas entièrement traduite</strong>, désires t'on afficher les champs manquants dans la langue par défaut <em>(ex: anglais)</em> ou les masquer&thinsp;?</li>
-            </ul>
-          </section>
-
-          <section class="section is-management is-dev" id="url">
-            <h3>
-              <a href="#url" class="anchor">Url</a>
-            </h3>
-            <ul>
-              <li>Quel est le <strong>format des urls</strong>&thinsp;? <em>(Enlever les espaces, les remplacer par des "-", tout en minuscule, etc.)</em></li>
-              <li>Est-ce que la <strong>langue</strong> doit apparaitre dans l'url&thinsp;?</li>
+              <li>
+                Quelles fontes seront utilisées&thinsp;?
+                <textarea rows="1"></textarea>
+                <em class="tip tip--yellow js-dont-output">(Les séparés par une "," si il y en a plusieurs)</em>
+              </li>
+              <li>
+                Avons-nous les <strong>licenses web</strong> des fontes&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fonts" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fonts" value="Non" checked> Non
+                </label>
+              </li>
+              <li data-toggle-ref="fonts" data-toggle-visible="Oui">Url des licenses <input type="url"></li>
             </ul>
           </section>
 
@@ -284,10 +275,67 @@
                 <label class="radio js-dont-output">
                   <input type="radio" name="accessibility" value="AAA"> AAA
                 </label>
-                <small class="js-dont-output"> <a href="https://www.w3.org/TR/WCAG/">Voir références</a></small><br>
-                <em class="js-dont-output">(Le marché ontarien exige le niveau A. Le marché américain un hybride entre A ET AA.)</em>
+                &nbsp;<small class="js-dont-output"> <a href="https://www.w3.org/TR/WCAG/">Voir références</a></small><br>
+                <em class="tip js-dont-output">Le marché ontarien exige le niveau A</em>
+                <em class="tip js-dont-output">Le marché américain un hybride entre A ET AA</em>
               </li>
-              <li>Y aura t-il un <strong>audit</strong> pour valider que l'accessibilité est bien respectée <em>(Firme externe, outil en ligne, etc)</em>&thinsp;?</li>
+              <li>Y aura t-il un <strong>audit</strong> pour valider que l'accessibilité est bien respectée <em>(Firme externe,
+                  outil en ligne, etc)</em>&thinsp;?</li>
+            </ul>
+          </section>
+
+          <section class="section is-management" id="impression">
+            <h3>
+              <a href="#impression" class="anchor">Impression</a>
+            </h3>
+            <ul>
+              <li>
+                Le rendu des pages est
+                <label class="radio js-dont-output">
+                  <input type="radio" name="print" value="Important"> Important
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="print" value="Hors périmêtre" checked> Hors périmêtre
+                </label>
+              </li>
+              <li data-toggle-ref="print" data-toggle-visible="Important">Pages supportés&thinsp;?<textarea rows="1"></textarea></li>
+            </ul>
+          </section>
+
+          <section class="section is-management is-dev" id="format-urls">
+            <h3>
+              <a href="#format-urls" class="anchor">Format d'Urls</a>
+            </h3>
+            <ul>
+              <li>
+                Doit on remplacer les espaces par des "-"&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="format-urls-dash" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="format-urls-dash" value="Non" checked> Non
+                </label>
+                <em class="tip js-dont-output">(Évite les %20 dans les urls)</em>
+              </li>
+              <li>
+                Doit on forcer les minuscules&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="format-urls-lowercase" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="format-urls-lowercase" value="Non" checked> Non
+                </label>
+              </li>
+              <li data-toggle-ref=".cbLang" data-toggle-min="2">
+                Quand la <strong>langue</strong> doit-elle apparaitre dans l'url&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="format-urls-lang" value="En tout temps" checked> En tout temps
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="format-urls-lang" value="Lorsque la langue du site n'est pas celle par défaut">
+                  Lorsque la langue du site n'est pas celle par défaut
+                </label>
+              </li>
             </ul>
           </section>
 
@@ -295,63 +343,192 @@
             <h3>
               <a href="#tier-parties" class="anchor">Tiers parties</a>
             </h3>
-            <p>Aurons nous des <strong>dépendances</strong> envers des tiers parties&thinsp;? <em>(Ex: Coveo, Google Map, Api Vidéotron)</em>.</p>
+            <ul>
+              <li>
+                Aurons nous des <strong>dépendances</strong> envers des tiers parties&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tier-parties" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tier-parties" value="Non" checked> Non
+                </label>
+                <em class="tip js-dont-output">Ex: Coveo, Google Map, Api Vidéotron</em>
+              </li>
+              <li data-toggle-ref="tier-parties" data-toggle-visible="Oui"><textarea rows="3"></textarea></li>
+            </ul>
           </section>
 
           <section class="section is-creation is-dev" id="animations">
             <h3>
               <a href="#animations" class="anchor">Animations</a>
             </h3>
-            <p>Avons nous des <strong>sites de références</strong> qui démontrent le type d'animations que nous aimerions avoir&thinsp;?</p>
+            <ul>
+              <li>
+                Avons nous des <strong>sites de références</strong> qui démontrent le type d'animations que nous aimerions
+                avoir&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="ref-animations" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="ref-animations" value="Non" checked> Non
+                </label>
+              </li>
+              <li data-toggle-ref="ref-animations" data-toggle-visible="Oui"><textarea rows="5"></textarea></li>
+            </ul>
+            <p></p>
           </section>
 
           <section class="section is-creation is-management" id="pages-erreurs">
             <h3>
               <a href="#pages-erreurs" class="anchor">Pages d'erreurs</a>
             </h3>
-            <h4 id="404">
-              <a href="#404" class="anchor">404</a>
-            </h4>
-            <p>L'usager essais d'accèder à une <strong>page inexistante</strong> <em>(Cette page peut contenir un menu)</em>.</p>
+            <ul>
+              <li>
+                Devons-nous faire une page <strong>404</strong>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="error-404" value="Oui" checked> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="error-404" value="Non"> Non
+                </label>
+                <em class="tip js-dont-output">Affiche lorsqu'un usager essait d'accèder à une <strong>page inexistante.</strong></em>
+                <em class="tip js-dont-output">Cette page peut contenir un menu</em>
+              </li>
+              <li>
+                Devons-nous faire une page <strong>500</strong>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="error-500" value="Oui" checked> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="error-500" value="Non"> Non
+                </label>
+                <em class="tip js-dont-output">Affiche lorsque notre <strong>serveur ne répond plus</strong>.</em>
+                <em class="tip js-dont-output">Ne peut pas contenir de menu et doit-être multilingue</em>
+              </li>
+              <li>
+                Devons-nous faire une page <strong>maintenance</strong>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="error-maintenance" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="error-maintenance" value="Non" checked> Non
+                </label>
+              </li>
+              <li class="is-app">
+                Désirons-nous avoir une page de <strong>chargement au lancement</strong> de l'application&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="splash" value="Oui" checked> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="splash" value="Non"> Non
+                </label>
+              </li>
+              <li class="is-app">
+                Désirons-nous avoir une page indiquant à l'utilisateur qu'il est <strong>hors-ligne</strong>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="offline" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="offline" value="Non" checked> Non
+                </label>
+              </li>
+            </ul>
+          </section>
 
-            <h4 id="500">
-              <a href="#500" class="anchor">500</a>
-            </h4>
-            <p>Notre <strong>serveur ne répond plus</strong> <em>(Pas de menu et cette page doit-être multilingue)</em>.</p>
+          <section class="section is-management is-dev" id="environements">
+            <h3>
+              <a href="#environements" class="anchor">Environnements</a>
+            </h3>
+            <ol>
+              <li><input type="url" placeholder="projet.local"> Local</li>
+              <li><input type="url" placeholder="http://projet.qa.web.sldev.net"> QA</li>
+              <li><input type="url" placeholder="http://projet.int.web.sldev.net"> INT</li>
+              <li><input type="url" placeholder="http://projet.uat.web.sldev.net"> UAT</li>
+              <li><input type="url" placeholder="http://projet.cat.web.sldev.net"> CAT</li>
+              <li><input type="url" placeholder="https://projet.com"> Prod</li>
+            </ol>
+          </section>
 
-            <h4 id="page-de-maintenance">
-              <a href="#page-de-maintenance" class="anchor">Maintenance</a>
-            </h4>
-            <p>Désirons-nous avoir une page indiquant que le site est temporairement indisponible du à une <strong>opération de maintenance</strong>&thinsp;?</p>
+          <section class="section is-creation is-dev" id="grille">
+            <h3>
+              <a href="#grille" class="anchor">Grille</a>
+            </h3>
+            <ul>
+              <li>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid" value="none">
+                  Aucune
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid" value="Bootstrap 3">
+                  Bootstrap 3
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid" value="Bootstrap 4" checked>
+                  Bootstrap 4
+                </label>
+                <div data-toggle-ref="grid" data-toggle-visible="Bootstrap 3">
+                  <em class="tip js-dont-output"><a href="https://getbootstrap.com/docs/3.3/css/#grid">Doc Bootstrap 3</a></em>
+                </div>
+                <div data-toggle-ref="grid" data-toggle-visible="Bootstrap 4">
+                  <em class="tip js-dont-output"><a href="https://getbootstrap.com/docs/4.0/layout/grid/">Doc Bootstrap 4</a></em>
+                </div>
+              </li>
+            </ul>
+          </section>
 
-            <div class="is-app">
-              <h4 id="page-de-chargement">
-                <a href="#page-de-chargement" class="anchor">Page de chargement/splash</a>
-              </h4>
-              <p>Désirons-nous avoir une page de <strong>chargement au lancement</strong> de l'application&thinsp;?</p>
-
-              <h4 id="page-hors-ligne">
-                <a href="#page-hors-ligne" class="anchor">Page hors-ligne</a>
-              </h4>
-              <p>Désirons-nous avoir une page indiquant à l'utilisateur qu'il est <strong>hors-ligne</strong>&thinsp;?</p>
+          <section class="section is-creation is-dev" id="breakpoints" data-toggle-ref="grid" data-toggle-visible="Bootstrap 3||Bootstrap 4">
+            <h3>
+              <a href="#breakpoints" class="anchor">Breakpoints</a>
+            </h3>
+            <div data-toggle-ref="grid" data-toggle-visible="Bootstrap 3">
+              <p>Tiré de <a href="https://getbootstrap.com/docs/3.3/css/#grid-media-queries">Bootstrap 3</a>.</p>
+              <table>
+                <tr>
+                  <th>XS</th>
+                  <td>480px</td>
+                </tr>
+                <tr>
+                  <th>SM</th>
+                  <td>768px</td>
+                </tr>
+                <tr>
+                  <th>MD</th>
+                  <td>992px</td>
+                </tr>
+                <tr>
+                  <th>LG</th>
+                  <td>1200px</td>
+                </tr>
+              </table>
+            </div>
+            <div data-toggle-ref="grid" data-toggle-visible="Bootstrap 4">
+              <p>Tiré de <a href="https://getbootstrap.com/docs/4.0/layout/overview/#responsive-breakpoints">Bootstrap 4</a>.</p>
+              <table>
+                <tr>
+                  <th>SM</th>
+                  <td>576px</td>
+                </tr>
+                <tr>
+                  <th>MD</th>
+                  <td>768px</td>
+                </tr>
+                <tr>
+                  <th>LG</th>
+                  <td>992px</td>
+                </tr>
+                <tr>
+                  <th>XL</th>
+                  <td>1200px</td>
+                </tr>
+              </table>
             </div>
           </section>
 
-          <section class="section is-management" id="entree-contenu">
-            <h3>
-              <a href="#entree-contenu" class="anchor">Contenu</a>
-            </h3>
-            <ul>
-              <li><strong>Qui</strong> se chargera de fairel'<strong>entrée de contenu</strong>&thinsp;?</li>
-              <li><strong>Quand</strong> sera faite l'entrée de contenu&thinsp;? <em>Prévoir un minimum de contenu réel pour le QA.</em></li>
-              <li><strong>Prévoir pour le pire</strong> <em>(Entré du contenu dans la langue la plus longue, ex Fr vs En)</em>.</li>
-            </ul>
-            <p></p>
-          </section>
-
+          <input type="submit" name="submit" value="Générez pour Jira" class="btn btn--jira">
+          <textarea name="output" class="output-textarea"></textarea>
         </div>
       </article>
-
 
       <!--=== Guide de styles ===============================-->
       <article class="article js-jira" id="guide-de-styles">
@@ -641,11 +818,6 @@
           </section>
         </div>
       </article>
-
-      <!--=== Composante ===============================-->
-      <div class="article">
-        <input type="submit" name="submit" value="Soumettre">
-      </div>
 
       <!--=== Composante ===============================-->
       <article class="article" id="lexique">

@@ -4,7 +4,10 @@ class Checklist {
       cbRole: document.querySelectorAll('.js-set-role'),
       articles: document.querySelectorAll('.js-jira'),
       sections: document.querySelectorAll('.section'),
-      submit: document.forms.jira.submit
+      toggles: document.querySelectorAll('[data-toggle-ref]'),
+      togglesT: document.querySelectorAll('[data-toggle-refs]'),
+      submit: document.forms.jira.submit,
+      output: document.forms.jira.output
     };
   }
 
@@ -16,6 +19,7 @@ class Checklist {
     this.dom.cbRole.forEach(cbRole => {
       cbRole.addEventListener('change', e => this.setRole(e));
     });
+    this.dom.toggles.forEach(toggle => this.initToggle(toggle));
     this.dom.submit.addEventListener('click', e => this.setJira(e));
   }
 
@@ -25,10 +29,102 @@ class Checklist {
     document.body.classList.toggle(`show-${role}`, e.target.checked);
   }
 
+  getNode(selector) {
+    if (selector.startsWith('.') || selector.startsWith('#')) {
+      return document.forms.jira.querySelectorAll(selector);
+    } else {
+      return document.forms.jira[selector];
+    }
+  }
+
+  initToggle(toggle) {
+    let inputName = toggle.getAttribute('data-toggle-ref');
+    let inputs = this.getNode(inputName);
+    let isArr = inputs.length;
+    if (!isArr) inputs = [inputs];
+    let type = inputs[0].type;
+
+    if (type === 'radio') {
+      let value = toggle.getAttribute('data-toggle-visible');
+
+      if (value !== null) {
+        value = value.split('||');
+      }
+
+      for (let x = 0; x < inputs.length; x++) {
+        let input = inputs[x];
+
+        this.setToggleRadio(toggle, input, value);
+        input.addEventListener('change', () =>
+          this.setToggleRadio(toggle, input, value)
+        );
+      }
+    } else if (type === 'checkbox') {
+      let min = toggle.getAttribute('data-toggle-min');
+
+      if (min !== null) {
+        this.setToggleMinCheckbox(toggle, inputs, min);
+
+        for (let x = 0; x < inputs.length; x++) {
+          let input = inputs[x];
+          input.addEventListener('change', () =>
+            this.setToggleMinCheckbox(toggle, inputs, min)
+          );
+        }
+      } else {
+        for (let x = 0; x < inputs.length; x++) {
+          let input = inputs[x];
+
+          this.setToggleCheckbox(toggle, input);
+          input.addEventListener('change', () =>
+            this.setToggleCheckbox(toggle, input)
+          );
+        }
+      }
+    }
+  }
+
+  setToggleRadio(toggle, input, value) {
+    if (input.checked && value.indexOf(input.value) !== -1) {
+      toggle.style.display = '';
+      toggle.classList.remove('js-dont-output');
+    } else {
+      toggle.style.display = 'none';
+      toggle.classList.add('js-dont-output');
+    }
+  }
+
+  setToggleMinCheckbox(toggle, inputs, min) {
+    let nbrChecked = 0;
+
+    for (let x = 0; x < inputs.length; x++) {
+      if (inputs[x].checked) nbrChecked++;
+    }
+
+    if (nbrChecked >= parseInt(min)) {
+      toggle.style.display = '';
+      toggle.classList.remove('js-dont-output');
+    } else {
+      toggle.style.display = 'none';
+      toggle.classList.add('js-dont-output');
+    }
+  }
+
+  setToggleCheckbox(toggle, input) {
+    if (input.checked) {
+      toggle.style.display = '';
+      toggle.classList.remove('js-dont-output');
+    } else {
+      toggle.style.display = 'none';
+      toggle.classList.add('js-dont-output');
+    }
+  }
+
   setJira(e) {
     e.preventDefault();
     let html = this.getArticles();
     this.copyStringToClipboard(html);
+    this.dom.output.value = html;
   }
 
   getArticles() {
@@ -64,7 +160,7 @@ class Checklist {
 
       if (content !== '') {
         let title = section.querySelector('h3').innerText;
-        if(title !== '') {
+        if (title !== '') {
           html += `h3. ${title}\n`;
         }
         html += `${content}\n\n`;
@@ -77,7 +173,7 @@ class Checklist {
   getSectionType(section) {
     let type = 'text';
 
-    if(section.querySelector('ol')) {
+    if (section.querySelector('ol')) {
       type = 'ol';
     } else if (section.querySelector('ul')) {
       type = 'ul';
@@ -91,18 +187,22 @@ class Checklist {
     let items = section.querySelectorAll('li');
     let arr = [];
 
-    for(let x=0; x<items.length; x++) {
+    for (let x = 0; x < items.length; x++) {
       let item = items[x];
-      let text = this.getInput(item);
-      if (text !== '') {
-        arr.push(text);
+
+      if (item.offsetParent !== null) {
+        // L'élément est visible
+        let text = this.getInput(item);
+        if (text !== '') {
+          arr.push(text);
+        }
       }
     }
 
-    if(arr.length > 1) {
+    if (arr.length > 1) {
       let prefix = type === 'ul' ? '*' : '#';
       html = prefix + ' ' + arr.join(`\n${prefix} `);
-    } else if(arr.length === 1) {
+    } else if (arr.length === 1) {
       html = arr[0];
     }
 
@@ -112,6 +212,7 @@ class Checklist {
   getInput(node) {
     let input = node.querySelector('input');
     let select = node.querySelector('select');
+    let textarea = node.querySelector('textarea');
     let html = '';
 
     if (input !== null) {
@@ -129,17 +230,31 @@ class Checklist {
           html = this.getCheckbox(node, input);
           break;
       }
-    } else if(select !== null) {
+    } else if (select !== null) {
       html = this.getSelect(node, select);
+    } else if (textarea !== null) {
+      html = this.getTextarea(node, textarea);
     }
 
+    return html;
+  }
+
+  getTextarea(node, textarea) {
+    let html = '';
+    if (textarea.value !== '') {
+      let prefix = this.getText(node);
+      if (prefix !== '') prefix += ': ';
+      html = `${prefix}${textarea.value}`;
+    }
     return html;
   }
 
   getSelect(node, select) {
     let html = '';
     if (select.options[select.selectedIndex].value !== '') {
-      html = `${this.getText(node)} ${select.options[select.selectedIndex].text}`;
+      html = `${this.getText(node)} ${
+        select.options[select.selectedIndex].text
+      }`;
     }
     return html;
   }
@@ -147,7 +262,9 @@ class Checklist {
   getDate(node, input) {
     let html = '';
     if (input.value !== '') {
-      html = `*${input.value}*: ${this.getText(node)}`;
+      let suffix = this.getText(node);
+      if (suffix !== '') suffix = `: ${suffix}`;
+      html = `*${input.value}*${suffix}`;
     }
     return html;
   }
@@ -170,7 +287,9 @@ class Checklist {
     let name = input.getAttribute('name');
     let value = document.forms.jira[name].value;
     if (value !== '') {
-      html = `${this.getText(node)}: *${value}*`;
+      let prefix = this.getText(node);
+      if (prefix !== '') prefix += ': ';
+      html = `${prefix}*${value}*`;
     }
     return html;
   }
@@ -195,9 +314,12 @@ class Checklist {
   }
 
   replaceImg(str) {
-    let newStr = str.replace(/<img src\s*=\s*['\"]([^'\"]*?)['\"][^>]*?>/g, function (match, p1) {
-      return `!${p1}!`;
-    });
+    let newStr = str.replace(
+      /<img src\s*=\s*['\"]([^'\"]*?)['\"][^>]*?>/g,
+      function(match, p1) {
+        return `!${p1}!`;
+      }
+    );
 
     return newStr;
   }
@@ -205,7 +327,9 @@ class Checklist {
   stripTags(str) {
     let el = document.createElement('div');
     el.innerHTML = str;
-    el.querySelectorAll('.js-dont-output').forEach(e => e.parentNode.removeChild(e));
+    el.querySelectorAll('.js-dont-output').forEach(e =>
+      e.parentNode.removeChild(e)
+    );
     str = el.innerText;
     return str;
   }
