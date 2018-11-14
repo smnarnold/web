@@ -94,6 +94,17 @@ class Checklist {
   setElementToggledByRadioVisibility(element, radio, acceptableRadiosValuesArr) {
     let shouldBeVisible = radio.checked && acceptableRadiosValuesArr.indexOf(radio.value) !== -1;
     element.style.display = shouldBeVisible ? '' : 'none';
+
+    if (shouldBeVisible) {
+      let childrenRadios = element.querySelectorAll('input:checked');
+
+      /*if(childrenRadios.length) {
+        let ref = document.querySelectorAll(`[data-toggle-ref="${childrenRadios[0].name}"]`);
+        let newAcceptableRadiosValuesArr = this.getAcceptableRadiosValues(ref);
+        this.setElementToggledByRadioVisibility(ref, childrenRadios[0], newAcceptableRadiosValuesArr);
+        console.log(ref);
+      }*/
+    }
   }
 
   initElementToggledByCheckbox(element, checkboxesArr) {
