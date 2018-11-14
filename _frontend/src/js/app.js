@@ -7,7 +7,8 @@ class Checklist {
       toggles: document.querySelectorAll('[data-toggle-ref]'),
       togglesT: document.querySelectorAll('[data-toggle-refs]'),
       submit: document.forms.jira.submit,
-      output: document.forms.jira.output
+      output: document.forms.jira.output,
+      generalCopy: document.querySelector('.general-copy')
     };
   }
 
@@ -125,6 +126,8 @@ class Checklist {
     let html = this.getArticles();
     this.copyStringToClipboard(html);
     this.dom.output.value = html;
+    this.dom.generalCopy.classList.add('flipin');
+    this.dom.generalCopy.addEventListener('animationend', () => this.dom.generalCopy.classList.remove('flipin'))
   }
 
   getArticles() {

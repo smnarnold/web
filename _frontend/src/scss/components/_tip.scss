@@ -15,4 +15,16 @@
     background-color: palette(yellow, light);
     border: solid 1px palette(yellow, base);
   }
+
+  &.tip--green {
+    background-color: palette(green, light);
+    border: solid 1px palette(green, base);
+  }
+
+  &.tip--reveal {
+    opacity: 0;
+    min-width: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
