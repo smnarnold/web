@@ -84,11 +84,14 @@ class Checklist {
     for (let x = 0; x < radiosArr.length; x++) {
       let radio = radiosArr[x];
 
-      this.setElementToggledByRadioVisibility(
-        element,
-        radio,
-        acceptableRadiosValuesArr
-      );
+      if (radio.checked) {
+        this.setElementToggledByRadioVisibility(
+          element,
+          radio,
+          acceptableRadiosValuesArr
+        );
+      }
+
       radio.addEventListener('change', () =>
         this.setElementToggledByRadioVisibility(
           element,
@@ -104,8 +107,9 @@ class Checklist {
     radio,
     acceptableRadiosValuesArr
   ) {
+    let isRadioVisible = radio.offsetParent !== null;
     let isAcceptable = acceptableRadiosValuesArr.indexOf(radio.value) !== -1;
-    let shouldBeVisible = radio.checked && isAcceptable;
+    let shouldBeVisible = radio.checked && isAcceptable && isRadioVisible;
 
     if (shouldBeVisible) {
       element.style.display = '';
@@ -149,7 +153,8 @@ class Checklist {
   }
 
   setElementToggledByCheckboxVisibility(element, checkbox) {
-    if (checkbox.checked) {
+    let isCheckboxVisible = checkbox.offsetParent !== null;
+    if (checkbox.checked && isCheckboxVisible) {
       element.style.display = '';
       this.checkChildrenInputs(element);
     } else {
@@ -164,8 +169,15 @@ class Checklist {
       if (checkboxesArr[x].checked) nbrChecked++;
     }
 
-    let shouldBeVisible = nbrChecked >= parseInt(min);
-    element.style.display = shouldBeVisible ? '' : 'none';
+    let areCheckboxesVisibles = checkboxesArr[0].offsetParent !== null;
+    let shouldBeVisible = nbrChecked >= parseInt(min) && areCheckboxesVisibles;
+
+    if (shouldBeVisible) {
+      element.style.display = '';
+      this.checkChildrenInputs(element);
+    } else {
+      element.style.display = 'none';
+    }
   }
 
   checkChildrenInputs(parent) {
