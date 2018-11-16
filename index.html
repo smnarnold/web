@@ -691,13 +691,21 @@
                 <label class="radio js-dont-output">
                   <input type="radio" name="submenu-open" value="survole"> survole
                 </label>
+                <em class="tip js-dont-output" data-toggle-ref="submenu-open" data-toggle-visible="survole">Les appareils <em>touch only (mobile, tablettes)</em> ne pourront pas ouvrir les sous-menus</em>
               </li>
               <li data-toggle-ref="submenu-open" data-toggle-visible="clic">
                 Comment l'usager accèdera t-il au 1<sup>er</sup> niveau de navigation&thinsp;?
                 <label class="radio js-dont-output">
                   <input type="radio" name="submenu-click" value="Il sera répété dans la sous-navigation" checked> Il sera répété dans la sous-navigation
                 </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="submenu-click" value="Autre(s)"> Autre(s)
+                </label>
                 <em class="tip js-dont-output">Il est impossible par exemple de cliquer sur le menu <em>Équipe</em> pour ouvrir le sous-menu ET aussi être dirrigé vers la dite page d'équipe.</em>
+              </li>
+              <li data-toggle-ref="submenu-click" data-toggle-visible="Autre(s)">
+                Décrire l'accès au 1<sup>er</sup> niveau
+                <textarea rows="5"></textarea>
               </li>
             </ul>
           </section>

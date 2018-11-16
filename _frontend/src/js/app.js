@@ -61,7 +61,7 @@ class Checklist {
     if (!inputsArr.length) inputsArr = [inputsArr]; // Force inputs to be an array even if there is only 1 value
     let type = inputsArr[0].type; // radio, checkbox, etc.
 
-    switch(type) {
+    switch (type) {
       case 'radio':
         this.initElementToggledByRadio(element, inputsArr);
         break;
@@ -84,26 +84,34 @@ class Checklist {
     for (let x = 0; x < radiosArr.length; x++) {
       let radio = radiosArr[x];
 
-      this.setElementToggledByRadioVisibility(element, radio, acceptableRadiosValuesArr);
+      this.setElementToggledByRadioVisibility(
+        element,
+        radio,
+        acceptableRadiosValuesArr
+      );
       radio.addEventListener('change', () =>
-        this.setElementToggledByRadioVisibility(element, radio, acceptableRadiosValuesArr)
+        this.setElementToggledByRadioVisibility(
+          element,
+          radio,
+          acceptableRadiosValuesArr
+        )
       );
     }
   }
 
-  setElementToggledByRadioVisibility(element, radio, acceptableRadiosValuesArr) {
-    let shouldBeVisible = radio.checked && acceptableRadiosValuesArr.indexOf(radio.value) !== -1;
-    element.style.display = shouldBeVisible ? '' : 'none';
+  setElementToggledByRadioVisibility(
+    element,
+    radio,
+    acceptableRadiosValuesArr
+  ) {
+    let isAcceptable = acceptableRadiosValuesArr.indexOf(radio.value) !== -1;
+    let shouldBeVisible = radio.checked && isAcceptable;
 
     if (shouldBeVisible) {
-      let childrenRadios = element.querySelectorAll('input:checked');
-
-      /*if(childrenRadios.length) {
-        let ref = document.querySelectorAll(`[data-toggle-ref="${childrenRadios[0].name}"]`);
-        let newAcceptableRadiosValuesArr = this.getAcceptableRadiosValues(ref);
-        this.setElementToggledByRadioVisibility(ref, childrenRadios[0], newAcceptableRadiosValuesArr);
-        console.log(ref);
-      }*/
+      element.style.display = '';
+      this.checkChildrenInputs(element);
+    } else {
+      element.style.display = 'none';
     }
   }
 
@@ -111,13 +119,21 @@ class Checklist {
     let min = element.getAttribute('data-toggle-min');
 
     if (min !== null) {
-      this.setElementToggledByCheckboxMinVisibility(element, checkboxesArr, min);
+      this.setElementToggledByCheckboxMinVisibility(
+        element,
+        checkboxesArr,
+        min
+      );
 
       for (let x = 0; x < checkboxesArr.length; x++) {
         let checkbox = checkboxesArr[x];
 
         checkbox.addEventListener('change', () =>
-          this.setElementToggledByCheckboxMinVisibility(element, checkboxesArr, min)
+          this.setElementToggledByCheckboxMinVisibility(
+            element,
+            checkboxesArr,
+            min
+          )
         );
       }
     } else {
@@ -133,7 +149,12 @@ class Checklist {
   }
 
   setElementToggledByCheckboxVisibility(element, checkbox) {
-    element.style.display = checkbox.checked ? '' : 'none';
+    if (checkbox.checked) {
+      element.style.display = '';
+      this.checkChildrenInputs(element);
+    } else {
+      element.style.display = 'none';
+    }
   }
 
   setElementToggledByCheckboxMinVisibility(element, checkboxesArr, min) {
@@ -145,6 +166,34 @@ class Checklist {
 
     let shouldBeVisible = nbrChecked >= parseInt(min);
     element.style.display = shouldBeVisible ? '' : 'none';
+  }
+
+  checkChildrenInputs(parent) {
+    let input = parent.querySelector('input:checked');
+
+    if (input !== null) {
+      let type = input.type; // radio, checkbox, etc.
+      let elements = document.querySelectorAll(
+        `[data-toggle-ref="${input.name}"]`
+      );
+
+      for (let x = 0; x < elements.length; x++) {
+        let element = elements[x];
+
+        switch (type) {
+          case 'radio':
+            this.setElementToggledByRadioVisibility(
+              element,
+              input,
+              this.getAcceptableRadiosValues(element)
+            );
+            break;
+          case 'checkbox':
+            this.setElementToggledByCheckboxVisibility(element, input);
+            break;
+        }
+      }
+    }
   }
 
   getArticles(form) {
