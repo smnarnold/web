@@ -772,23 +772,26 @@
                 </em>
               </li>
               <li data-toggle-ref="hamburger" data-toggle-visible="Oui">
-                Comment apparaitra le menu&thinsp;?
+                Le menu apparaitra en
                 <label class="radio js-dont-output">
-                  <input type="radio" name="mobile-menu-animation" value="Glissera de la gauche" checked> Glissera de
+                  <input type="radio" name="mobile-menu-animation" value="Glissant de la gauche" checked> Glissant de
                   la gauche
                 </label>
                 <label class="radio js-dont-output">
-                  <input type="radio" name="mobile-menu-animation" value="Glissera de la droite"> Glissera de la droite
+                  <input type="radio" name="mobile-menu-animation" value="Glissant de la droite"> Glissant de la droite
                 </label>
                 <label class="radio js-dont-output">
-                  <input type="radio" name="mobile-menu-animation" value="Glissera du haut"> Glissera du haut
+                  <input type="radio" name="mobile-menu-animation" value="Glissant du haut"> Glissant du haut
                 </label>
                 <label class="radio js-dont-output">
-                  <input type="radio" name="mobile-menu-animation" value="Glissera du bas"> Glissera du bas
+                  <input type="radio" name="mobile-menu-animation" value="Fade"> Fade
                 </label>
                 <label class="radio js-dont-output">
-                  <input type="radio" name="mobile-menu-animation" value="Fade In/out"> Fade In/out
+                  <input type="radio" name="mobile-menu-animation" value="Autre"> Autre
                 </label>
+              </li>
+              <li data-toggle-ref="mobile-menu-animation" data-toggle-visible="Autre">
+                <textarea rows="1"></textarea>
               </li>
               <li>
                 Est-ce que certains éléments sont <strong>ajoutés ou retirés</strong> du menu en version
@@ -815,283 +818,1115 @@
       </form>
     </article>
 
-    <!--=== Composante ===============================-->
-    <article class="article js-article" id="composantes">
-      <div class="wrapper">
-        <h2>
-          <a href="#composantes" class="anchor">Composantes</a>
-        </h2>
+    <!--=== Barre de recherche ===============================-->
+    <article class="article js-article" id="barre-de-recherche">
+      <form name="barre-de-recherche">
+        <div class="wrapper">
+          <h2>
+            <a href="#barre-de-recherche" class="anchor">Barre de recherche</a>
+          </h2>
 
-        <p>Une composante devrait toujours être pensée <strong>mobile first</strong> afin d'identifier ses
-          fonctionnalités clés et simplifier sont développement. <em>(Par exemple une tuile en mobile pourrait focuser
-            sur la base image/titre/description et offrir une expérience plus riche en desktop, ex: un choix de
-            couleur, un aperçu plus détaillé au survole, etc).</em></p>
+          <section class="section is-creation is-management is-dev" id="barre-de-recherche-general">
+            <ul>
+              <li>
+                Est <strong>visible</strong>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="search-visibility" value="Dès le départ" checked> Dès le départ
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="search-visibility" value="Au clique"> Au clique
+                </label>
+              </li>
+              <li data-toggle-ref="search-visibility" data-toggle-visible="Au clique">
+                Comment apparaît-elle&thinsp;?
+                <textarea rows="3"></textarea>
+                <em class="tip js-dont-output" data-toggle-ref="search-visibility" data-toggle-visible="Au clique">Ex: sur
+                  un icône de
+                  🔎, sur le mot <em>Recherche</em>, etc.</em>
+              </li>
+              <li>
+                La recherche est <strong>effectué</strong> lorsque l'usager appuit sur
+                <label class="radio js-dont-output">
+                  <input type="radio" name="search-triggered" value="Enter"> <kbd>Enter</kbd>
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="search-triggered" value="Un bouton" checked> Un bouton
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="search-triggered" value="Enter et un bouton" checked> <kbd>Enter</kbd> et un
+                  bouton
+                </label>
+                <em class="tip js-dont-output">Pour des raisons d'accessibilité, il est conseillé d'avoir un bouton</em>
+              </li>
+              <li>
+                Y a t'il un bouton d'<strong>éffacement rapide</strong> ❌&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="search-reset" value="Oui" checked> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="search-reset" value="Non"> Non
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="search-reset" value="Uniquement sur mobile"> Uniquement sur mobile
+                </label>
+                <em class="tip js-dont-output">Pratique en mobile</em>
+              </li>
+              <li data-toggle-ref="search-visibility" data-toggle-visible="Au clique">
+                Comment <strong>ferme</strong> t'on la barre de recherche&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="search-close" value="Avec une croix" checked> Avec une croix
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="search-close" value="Une mention fermer"> Une mention <em>"Fermer"</em>
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="search-close" value="En cliquant hors de la barre"> En cliquant hors de la
+                  barre
+                </label>
+                <em class="tip tip--yellow js-dont-output" data-toggle-ref="search-reset" data-toggle-visible="Oui">Attention
+                  de bien différencier cette fonctionnalité du bouton d'effacement rapide</em>
+              </li>
+              <li>
+                Y a t'il une fonctionnalité d'<strong>autocomplete</strong>&thinsp;
+                <label class="radio js-dont-output">
+                  <input type="radio" name="search-autocomplete" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="search-autocomplete" value="Non" checked> Non
+                </label>
+              </li>
+            </ul>
+          </section>
 
-        <section class="section is-creation is-management is-dev" id="composantes-footer">
-          <h3>
-            <a href="#composantes-footer" class="anchor">Footer</a>
-          </h3>
-          <ul>
-            <li>Est-ce que le footer contiendra un <strong>sitemap</strong>&thinsp;?</li>
-            <li>Contient t'il des liens vers les réseaux sociaux&thinsp;?</li>
-          </ul>
-        </section>
+          <em class="copied-msg tip tip--green tip--reveal">📋 Copier dans le Presse-Papier</em>
+          <input type="submit" name="submit" value="Générez pour Jira" class="btn btn--centered">
+          <textarea name="output" class="output-textarea"></textarea>
+        </div>
+      </form>
+    </article>
 
-        <section class="section is-creation is-management is-dev" id="composantes-recherche">
-          <h3>
-            <a href="#composantes-recherche" class="anchor">Recherche</a>
-          </h3>
+    <!--=== Hero ===============================-->
+    <article class="article js-article" id="hero">
+      <form name="hero">
+        <div class="wrapper">
+          <h2>
+            <a href="#hero" class="anchor">Hero</a>
+          </h2>
 
-          <h4 id="composantes-barre-de-recherche">
-            <a href="#composantes-barre-de-recherche" class="anchor">Barre de recherche</a>
-          </h4>
-          <ul>
-            <li><strong>Apparait</strong> après une action <em>(ex: clique sur une loupe)</em> ou est-elle déjà dans le
-              header&thinsp;?</li>
-            <li>Si la barre de recherche apparait, quelle est son animation&thinsp;? <em>(Avons nous un site de
-                référence)</em></li>
-            <li>Contient-elle un <strong>bouton de recherche</strong> <em>(Search)</em> ou est elle déclencher par un
-              <em>"Enter"</em>&thinsp;? <em>(Il est conseillé d'avoir un bouton pour des raisons d'accessibilité)</em>.</li>
-            <li>Y a t'il un bouton d'<strong>effacement rapide</strong> <em>(Clear ou X)</em> permettant d'effacer le
-              terme actuellement entré&thinsp;? <em>(Ces boutons sont surtout pratique en mobile.)</em></li>
-            <li>Si la barre de recherche apparait, quel est le moyen de la <strong>fermer</strong> et est-ce facile de
-              le différencier du bouton d'effacement <em>(Clear ou X)</em> <em>(Si il est présent)</em>&thinsp;?</li>
-            <li>Quel est l'apparence des suggestions fournis par la barre de recherche&thinsp;?</li>
-          </ul>
+          <section class="section is-creation is-management is-dev" id="hero-media">
+            <h3>
+              <a href="#hero-media" class="anchor">Media</a>
+            </h3>
+            <ul>
+              <li>
+                Les médias seront de <strong>type</strong>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-background" value="Image" checked> Image
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-background" value="Vidéo/Gif animé"> Vidéo/Gif animé
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-background" value="Image et Vidéo"> Image et Vidéo
+                </label>
+              </li>
+              <li>
+                Le <strong>ratio</strong> s'ajustera en fonction
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-ratio" value="Du média en arrière-plan"> Du média en arrière-plan
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-ratio" value="D'un ratio prédéfini" checked> D'un ratio prédéfini
+                </label>
+                <em class="tip tip--yellow js-dont-output" data-toggle-ref="hero-ratio" data-toggle-visible="Du média en arrière-plan">Si les médias utilisés n'ont pas tous la même dimension, le format des héros varira d'une page à l'autre</em>
+                <em class="tip tip--yellow js-dont-output" data-toggle-ref="hero-ratio" data-toggle-visible="D'un ratio prédéfini">Certaines parties des médias seront probablement rognées</em>
+              </li>
+              <li>
+                Si aucun média n'est sélectionné comme arrière-plan, nous afficherons
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-media-fallback" value="Une image par défaut" checked> une image par défaut
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-media-fallback" value="Une couleur unie"> une couleur unie
+                </label>
+              </li>
+              <li data-toggle-ref="hero-ratio" data-toggle-visible="D'un ratio prédéfini">
+                Le <strong>focus</strong> devrait être
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-background-position" value="Au centre" checked> Au centre
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-background-position" value="Au centre, vers le haut"> Au centre, vers le haut
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-background-position" value="Personnalisable par média"> Personnalisable par média
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-background-position" value="Autre"> Autre
+                </label>
+                <em class="tip js-dont-output" data-toggle-ref="hero-background-position" data-toggle-visible="Au centre">Idéal pour les paysages</em>
+                <em class="tip js-dont-output" data-toggle-ref="hero-background-position" data-toggle-visible="Au centre, vers le haut">Idéal pour les portraits</em>
+              </li>
+              <li data-toggle-ref="hero-background-position" data-toggle-visible="Autre">
+                <textarea rows="1"></textarea>
+              </li>
+            </ul>
+          </section>
 
-          <h4 id="composantes-recherche-page-de-resultats">
-            <a href="#composantes-recherche-page-de-resultats" class="anchor">Page de résultats</a>
-          </h4>
-          <ul>
-            <li>Est-ce qu'une <strong>barre de recherche</strong> est affichée dans la page ou utilise t'on la barre de
-              recherche globale <em>(Ex: la barre de recherche du menu)</em>&thinsp;?</li>
-            <li>Quel est l'<strong>apprence des résultats</strong>&thinsp;? Est-ce le même qu'ailleur dans le
-              site&thinsp;? Si oui est-ce que ces styles se marient bien ensemble&thinsp;?</li>
-            <li><strong>Combiens d'items</strong> seront affiché par <em>"refiner/facet"</em> <em>(ex: 5 plus
-                pertinents et un "show more" englobant les autres)</em>&thinsp;?</li>
-            <li>Quel est le <strong>sorting par défaut</strong>&thinsp;? Offrons nous d'autres options <em>(ex: Menu
-                déroulant par date, par prix, etc.)</em></li>
-            <li>Affichons-nous un <strong>pager</strong>, un <em>"load more"</em> ou un infinite scroll&thinsp;? Et
-              quel style appliquerons nous&thinsp;?</li>
-            <li><strong>Combiens de résultats</strong> affichons-nous par page&thinsp;?</li>
-            <li>Que ce passe-til si il n'y a <strong>pas de résultats</strong>&thinsp;?</li>
-            <li>Affichons-nous le <strong>détail de la recherche</strong> <em>(ex: le nombre de résultats trouvés en X
-                temps avec X mot clé)</em> et si oui, quel est son style&thinsp;?</li>
-            <li>Y a t'il plus d'un <strong>type d'affichage</strong> disponible <em>(liste/tuiles)</em>&thinsp;?</li>
-          </ul>
+          <section class="section is-creation is-management is-dev" id="hero-text">
+            <h3>
+              <a href="#hero-text" class="anchor">Texte</a>
+            </h3>
+            <ul>
+              <li>
+                Le <strong>titre</strong> sera
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-title" value="Obligatoire" checked> Obligatoire
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-title" value="Autre"> Optionnel
+                </label>
+              </li>
+              <li>
+                Le titre sera un champ
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-title-html" value="Texte" checked> Texte
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-title-html" value="Html"> Html
+                </label>
+                <em class="tip js-dont-output" data-toggle-ref="hero-title-html" data-toggle-visible="Html">Permet d'afficher des
+                  mots en <em>italic</em>, <strong>gras</strong>, <sup>exposant</sup>, etc.</em>
+              </li>
+              <li>
+                Peut-il y avoir un <strong>tagline</strong>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-tagline" value="Oui" checked> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-tagline" value="Non" checked> Non
+                </label>
+                <em class="tip js-dont-output">Affiché en haut du titre, ex: <em>(Nouvelles, sport, culture, etc.)</em></em>
+              </li>
+              <li data-toggle-ref="hero-tagline" data-toggle-visible="Oui">
+                Le tagline sera un champ
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-tagline-html" value="Texte" checked> Texte
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-tagline-html" value="Html"> Html
+                </label>
+                <em class="tip js-dont-output" data-toggle-ref="hero-tagline-html" data-toggle-visible="Html">Permet d'afficher des
+                  mots en <em>italic</em>, <strong>gras</strong>, <sup>exposant</sup>, etc.</em>
+              </li>
+              <li>
+                Peut-il y avoir un <strong>sous-titre</strong>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-subtitle" value="Oui" checked> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-subtitle" value="Non" checked> Non
+                </label>
+                <em class="tip js-dont-output">Affiché en bas du titre</em>
+              </li>
+              <li data-toggle-ref="hero-subtitle" data-toggle-visible="Oui">
+                Le subtitle sera un champ
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-subtitle-html" value="Texte" checked> Texte
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-subtitle-html" value="Html"> Html
+                </label>
+                <em class="tip js-dont-output" data-toggle-ref="hero-tagline-html" data-toggle-visible="Html">Permet d'afficher des
+                  mots en <em>italic</em>, <strong>gras</strong>, <sup>exposant</sup>, etc.</em>
+              </li>
+              <li>
+                Peut-il y avoir une <strong>description</strong>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-description" value="Oui" checked> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-description" value="Non"> Non
+                </label>
+                <em class="tip js-dont-output">Affiché en bas du titre</em>
+              </li>
+              <li data-toggle-ref="hero-description" data-toggle-visible="Oui">
+                La description sera un champ
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-description-html" value="Texte" checked> Texte
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-description-html" value="Html"> Html
+                </label>
+                <em class="tip js-dont-output" data-toggle-ref="hero-tagline-html" data-toggle-visible="Html">Permet d'afficher des
+                  mots en <em>italic</em>, <strong>gras</strong>, <sup>exposant</sup>, etc.</em>
+              </li>
+              <li data-toggle-ref="hero-description" data-toggle-visible="Oui">
+                Si la description est trop longue, nous la
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-description-ellipsis" value="laisserons telle quelle" checked> laisserons telle quelle
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-description-ellipsis" value="tronquerons"> tronquerons
+                </label>
+                <em class="tip js-dont-output">Malheureusement, nous ne pouvons pas tronquer du contenu HTML</em>
+              </li>
+              <li data-toggle-ref="hero-description-ellipsis" data-toggle-visible="tronquerons">
+                Après combien de caractères devrions-nous la tronquer&thinsp;?
+                <textarea rows="1"></textarea>
+              </li>
+            </ul>
+          </section>
 
-          <h4 id="composantes-recherche-refiners">
-            <a href="#composantes-recherche-refiners" class="anchor">Refiners/facets</a>
-          </h4>
-          <ul>
-            <li>Quelles sont les <strong><em>"refiners/facets"</em></strong> qui seront utilisés et quel seront leur
-              apparence&thinsp;?</li>
-            <li>Y a t'il un <strong>nombre maximum</strong> de <em>"refiners/facets"</em>&thinsp;?</li>
-            <li>Est-ce que les refiners, sont convertis en <strong>menu déroulant sur mobile</strong>&thinsp;?</li>
-          </ul>
-        </section>
+          <section class="section is-creation is-management is-dev" id="hero-mobile">
+            <h3>
+              <a href="#hero-mobile" class="anchor">Mobile</a>
+            </h3>
+            <ul>
+              <li data-toggle-ref="hero-ratio" data-toggle-visible="D'un ratio prédéfini">
+                Le ratio des médias, par rapport au desktop, sera
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-ratio-mobile" value="Le même" checked> le même
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-ratio-mobile" value="Différent"> différent
+                </label>
+              </li>
+              <li>
+                Doit on prévoir un 2e set d'images pour le mobile&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-mobile-images" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="hero-mobile-images" value="Non" checked> Non
+                </label>
+                <em class="tip js-dont-output" data-toggle-ref="hero-mobile-images" data-toggle-visible="Oui">Doublera l'effort d'entré de médias</em>
+                <em class="tip js-dont-output" data-toggle-ref="hero-mobile-images" data-toggle-visible="Oui">Potentiellement moins performant</em>
+              </li>
+            </ul>
+          </section>
 
-        <section class="section is-creation is-management is-dev" id="composantes-hero">
-          <h3>
-            <a href="#composantes-hero" class="anchor">Hero</a>
-          </h3>
-          <h4 id="composantes-hero-media">
-            <a href="#composantes-hero-media" class="anchor">Media</a>
-          </h4>
-          <ul>
-            <li>Est-ce seulement une <strong>image</strong> ou est-ce qu'une <strong>vidéo</strong> peut être
-              utilisée&thinsp;?</li>
-            <li>Quel est le <strong>ratio</strong> souhaité&thinsp;?</li>
-            <li>Est-ce que le <strong>ratio mobile</strong> est le même qu'en desktop&thinsp;? Si non, doit-on prévoir
-              une <strong>2e image</strong>&thinsp;?</li>
-            <li>Est-ce qu'une <strong>image par défaut</strong> doit-être affichée, si aucune n'est entrée dans le
-              CMS&thinsp;? Si oui, avons nous designé cette image&thinsp;?</li>
-          </ul>
-          <h4 id="composantes-hero-contenu">
-            <a href="#composantes-hero-contenu" class="anchor">Contenu</a>
-          </h4>
-          <ul>
-            <li>Peut-il y avoir un <strong><em>"tagline"</em></strong> <em>ex: catégorie (Nouvelles, sport, culture,
-                etc.)</em></li>
-            <li>Est-ce qu'un <strong>titre</strong> peut être ajouté&thinsp;?</li>
-            <li>Si oui, est-ce que le titre est <strong>obligatoire</strong>&thinsp;?</li>
-            <li>Est-ce que le titre peux contenir du <strong>HTML</strong>&thinsp;? <em>(Ex: balise sup, gras,
-                italique, etc).</em></li>
-            <li>Est-ce qu'un <strong>sous-titre</strong> peut être ajouté&thinsp;?</li>
-            <li>Est-ce que le sous-titre peux contenir du <strong>HTML</strong>&thinsp;? <em>(Ex: balise sup, gras,
-                italique, etc).</em></li>
-            <li>Est-ce qu'une <strong>description</strong> peut être ajoutée&thinsp;?</li>
-            <li>Est-ce que la description peut contenir du <strong>HTML</strong>&thinsp;? <em>(Ex: balise sup, gras,
-                italique, etc).</em></li>
-            <li>Est-ce que la description peut être <strong>tronquée</strong>, si oui après quelle longueur&thinsp;?</li>
-            <li>Est-ce que l'éditeur peut choisir parmis différentes fontes, tailles, couleurs, etc&thinsp;? <em>(Souvenez-vous
-                que plus d'options = plus de flexibilité, mais moins de cohérence visuelle)</em>.</li>
-          </ul>
-        </section>
+          <em class="copied-msg tip tip--green tip--reveal">📋 Copier dans le Presse-Papier</em>
+          <input type="submit" name="submit" value="Générez pour Jira" class="btn btn--centered">
+          <textarea name="output" class="output-textarea"></textarea>
+        </div>
+      </form>
+    </article>
 
-        <section class="section is-creation is-management is-dev" id="composantes-fil-dariane">
-          <h3>
-            <a href="#composantes-fil-dariane" class="anchor">Fil d'ariane</a>
-          </h3>
-          <ul>
-            <li>Affichons-nous l'<strong>élément courant</strong>&thinsp;?</li>
-            <li>Si oui, est-il cliquable et est-il visuellement <strong>différent</strong> du reste&thinsp;?</li>
-            <li>Doit-on prévoir des <strong>short names</strong> pour afficher dans le fil d'ariane&thinsp;? <br><em>(Ex:
-                "Recherche et développement technologique" affiche comme "R&D technologique" dans le fil d'ariane")</em></li>
-            <li>Que ce passe t'il si le fil d'ariane est <strong>trop long</strong> pour son espace&thinsp;? Doit-il
-              tomber sur 2 lignes, doit-on le tronquer&thinsp;?</li>
-          </ul>
-        </section>
+    <!--=== Fil d'Ariane ===============================-->
+    <article class="article js-article" id="fil-d-ariane">
+      <form name="breadcrumb">
+        <div class="wrapper">
+          <h2>
+            <a href="#fil-d-ariane" class="anchor">Fil d'ariane</a>
+          </h2>
 
-        <section class="section is-creation is-management is-dev" id="composantes-tuile">
-          <h3>
-            <a href="#composantes-tuile" class="anchor">Tuile</a>
-          </h3>
-          <ul>
-            <li>Est-elle toute <strong>cliquable</strong> ou seulement certaines parties&thinsp;? <em>(Si la tuile
-                contient des options, ex couleur, nous ne pourrons pas la rendre toute cliquable)</em>.</li>
-            <li>Est-ce que toutes les tuiles doivent avoir la <strong>même hauteur</strong>&thinsp;? Si oui, prévoir du
-              troncage <em>(voir plus bas)</em>.</li>
-            <li>Est-ce que les tuiles seront utilisées dans un <strong>carousel</strong>&thinsp;?</li>
-            <li>Est-ce qu'un bouton <strong><em>"Load more"</em></strong> sera présent&thinsp;?
-              <ul>
-                <li>Améne t'il sur une autre page, fait-il un appel ajax pour charger plus de contenu, affiche t'il du
-                  contenu masqué&thinsp;?</li>
-                <li>Y a t'il une <strong>animation</strong> pendant le chargement du nouveau contenu&thinsp;?</li>
-              </ul>
-            </li>
-          </ul>
-          <h4 id="composantes-tuile-media">
-            <a href="#composantes-tuile-media" class="anchor">Media</a>
-          </h4>
-          <ul>
-            <li>Est-ce seulement une <strong>image</strong> ou est-ce qu'un <strong>vidéo/gif animé</strong> peut être
-              utilisé&thinsp;?</li>
-            <li>Quel est le <strong>ratio</strong> souhaité&thinsp;?</li>
-            <li><strong>Forçons-nous le ratio</strong> <em>(Évite les erreurs humaines, assure une meilleur cohérence
-                visuelle entre les tuiles, mais implique que certaines parties de l'image entrée puissent êtres
-                masquées si l'image n'est pas dans le bon ratio).</em></li>
-            <li>Au <strong>survole</strong>, affichons nous la même <strong>image/vidéo</strong>&thinsp;?</li>
-            <li>Est-ce que le <strong>curseur</strong> traditionnel est utilisé ou en désirons-nous un
-              personnalisé&thinsp;?</li>
-            <li>Est-ce qu'une <strong>image par défaut</strong> doit-être affichée, si aucune n'est entrée dans le
-              CMS&thinsp;? Si oui, avons nous designé cette image&thinsp;?</li>
-            <li>Y aura t-il parfois du <strong>texte</strong> par dessus le media <em>(ex: date, nom du client, tag,
-                etc.)</em>&thinsp;?</li>
-          </ul>
-          <h4 id="composantes-tuile-titre">
-            <a href="#composantes-tuile-titre" class="anchor">Titre</a>
-          </h4>
-          <ul>
-            <li>Est-ce qu'un titre peut être ajouté&thinsp;?</li>
-            <li>Si oui, est-ce que le titre est <strong>obligatoire</strong>&thinsp;?</li>
-            <li>Est-ce que le titre peux contenir du <strong>HTML</strong>&thinsp;? <em>(Ex: balise sup, gras,
-                italique, etc).</em></li>
-            <li>Est-ce qu'une <strong>limite éditorial</strong> est donnée&thinsp;?</li>
-            <li>Est-ce que le titre peut être <strong>tronqué</strong>, si oui après quelle longueur&thinsp;?</li>
-          </ul>
-          <h4 id="composantes-tuile-description">
-            <a href="#composantes-tuile-description" class="anchor">Description</a>
-          </h4>
-          <ul>
-            <li>Est-ce qu'une description peut être ajoutée&thinsp;?</li>
-            <li>Est-ce que la description peux contenir du <strong>HTML</strong>&thinsp;? <em>(Ex: balise sup, gras,
-                italique, etc).</em></li>
-            <li>Est-ce que la description peut être <strong>tronquée</strong>, si oui après quelle longueur&thinsp;?</li>
-          </ul>
-          <h4 id="composantes-tuile-cta">
-            <a href="#composantes-tuile-cta" class="anchor"><abbr title="Call To Action">CTA</abbr></a><a href="#cta-definition">*</a>
-          </h4>
-          <ul>
-            <li>Doit-il ouvrir dans un <strong>nouvel onglet</strong>&thinsp;?</li>
-          </ul>
-        </section>
+          <section class="section is-creation is-management is-dev" id="fil-d-ariane-general">
+            <ul>
+              <li>
+                La <strong>page courante</strong> sera
+                <label class="radio js-dont-output">
+                  <input type="radio" name="breadcrumb-current-page" value="Affiché" checked> Affichée
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="breadcrumb-current-page" value="Masqué"> Masquée
+                </label>
+              </li>
+              <li data-toggle-ref="breadcrumb-current-page" data-toggle-visible="Affiché">
+                L'affichage de la page courante aura un <strong>style</strong>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="breadcrumb-current-page-style" value="Similaire aux autres" checked> Similaire aux autres
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="breadcrumb-current-page-style" value="Différent"> Différent
+                </label>
+              </li>
+              <li data-toggle-ref="breadcrumb-current-page" data-toggle-visible="Affiché">
+                La page courante
+                <label class="radio js-dont-output">
+                  <input type="radio" name="breadcrumb-current-page-clickable" value="Ne sera pas cliquable" checked> Ne sera pas cliquable
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="breadcrumb-current-page-clickable" value="Sera cliquable"> Sera cliquable
+                </label>
+              </li>
+              <li>
+                Doit-on prévoir des <strong>noms courts</strong>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="breadcrumb-short-names" value="Oui" checked> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="breadcrumb-short-names" value="Non" checked> Non
+                </label>
+                <em class="tip js-dont-output">Ex: <em>"Recherche et développement technologique"</em> affiche comme <em>"R&D technologique"</em></em>
+              </li>
+              <li>
+                Si le fil est <strong>trop long</strong> pour l'espace donné, il
+                <label class="radio js-dont-output">
+                  <input type="radio" name="breadcrumb-too-long" value="Tombera sur 2 lignes" checked> Tombera sur 2 lignes
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="breadcrumb-too-long" value="Sera tronqué"> Sera tronqué
+                </label>
+                <em class="tip js-dont-output">Ex: <em>"Recherche et développement technologique"</em> affiche comme <em>"R&Dtechnologique"</em></em>
+              </li>
+            </ul>
+          </section>
 
-        <section class="section is-creation is-management is-dev" id="composantes-carousel">
-          <h3>
-            <a href="#composantes-carousel" class="anchor">Vidéo</a>
-          </h3>
-          <ul>
-            <li><strong>Où sera hébergé la vidéo</strong> sur nos serveurs, Youtube, Viméo, etc&thinsp;?</li>
-            <li>Désire-ton afficher les <strong>contrôles</strong> de la vidéo <em>(play/pause, volume, mute, etc)</em>&thinsp;?</li>
-            <li>Est-ce que la vidéo doit jouer en <strong>plein écran</strong> sur mobile&thinsp;?</li>
-            <li>Pensez à <strong>optimiser vos videos</strong> <em>(La compression vidéo est l'une des optimisation
-                aillant le plus d'impact sur la performance d'un site)</em>.</li>
-          </ul>
-          <h4 id="composantes-video-dans-la-page">
-            <a href="#composantes-video-dans-la-page" class="anchor">Dans la page</a>
-          </h4>
-          <ul>
-            <li>Doit-elle jouer <strong>automatiquement</strong>&thinsp;? <em>(Dans le cas d'une vidéo <u>avec son</u>,
-                il est fortement déconseillé de la faire jouer automatiquement)</em>.</li>
-            <li>Si non, doit-il y avoir un <em>poster</em> en attendant que l'utilisateur démarre la vidéo&thinsp;?</li>
-            <li>Que ce passe-t'il <strong>lorsque la vidéo est terminée</strong>&thinsp;? joue t-elle en loop&thinsp;?</li>
-          </ul>
-          <h4 id="composantes-video-en-popup">
-            <a href="#composantes-video-en-popup" class="anchor">En popup</a>
-          </h4>
-          <ul>
-            <li>Sur mobile, ouvre t-on le popup ou redirigeons nous l'usager vars l'<strong>app Youtube</strong>&thinsp;?<br><em>(L'app
-                Youtube nous sors du site, mais offre une expérience utilisateur plus agréable)</em>.</li>
-            <li>Que ce passe-til <strong>lorsque la vidéo est terminée</strong>&thinsp;? Est-ce que le popup doit se
-              fermer&thinsp;?</li>
-          </ul>
-        </section>
+          <em class="copied-msg tip tip--green tip--reveal">📋 Copier dans le Presse-Papier</em>
+          <input type="submit" name="submit" value="Générez pour Jira" class="btn btn--centered">
+          <textarea name="output" class="output-textarea"></textarea>
+        </div>
+      </form>
+    </article>
 
-        <section class="section is-creation is-management is-dev" id="composantes-carousel">
-          <h3>
-            <a href="#composantes-carousel" class="anchor">Carousel</a>
-          </h3>
-          <ul>
-            <li>Est-ce qu'un carousel est réellement la <a href="http://shouldiuseacarousel.com/">meilleure solution</a>
-              à notre besoin&thinsp;?</li>
-            <li>Quel est le <strong>nombre d'items affichés en même temps</strong>&thinsp;?</li>
-            <li>Est-ce que le nombre d'items affichés varie en fonction de nos <strong>breakpoints</strong> <em>(Si le
-                nombre est plus que 1, il devrait)</em>&thinsp;?</li>
-            <li>Est-ce que le carousel tourne à l'<strong>infini</strong>&thinsp;?</li>
-            <li>Est-ce que le carousel <strong>tourne automatiquement</strong> <em>(Autoplay)</em>&thinsp;?</li>
-            <li>Quelle est la <strong>transition</strong> souhaitée <em>(translation de gauche à droite, fade, etc)</em>&thinsp;?</li>
-            <li><strong>Forçons-nous le ratio</strong> <em>(Évite qu'il y est beaucoup de vide lorsque les hauteurs
-                sont disparates)</em>&thinsp;?</li>
-            <li>Affichons-nous des <strong>flèches</strong> et sont elles présentes dans tous les breakpoints&thinsp;?</li>
-            <li>Affichons-nous une <strong>liste de points</strong> indiquant l'item courant&thinsp;?</li>
-          </ul>
-        </section>
+    <!--=== Tuile ===============================-->
+    <article class="article js-article" id="tuile">
+      <form name="tile">
+        <div class="wrapper">
+          <h2>
+            <a href="#tuile" class="anchor">Tuile</a>
+          </h2>
 
-        <section class="section is-creation is-management is-dev" id="composantes-accordeon">
-          <h3>
-            <a href="#composantes-accordeon" class="anchor">Accordeon</a>
-          </h3>
-          <ul>
-            <li><strong>Q'est-ce qui est cliquable</strong> toute la barre de titre ou seulement l'icone&thinsp;?</li>
-            <li>Est-ce que seulement un tirroir peut-être ouvert à la fois ou peuvent-il tous être ouvert en même
-              temps&thinsp;? <em>(Accordeon vs Expend/collapse)</em></li>
-            <li>Doit-il y avoir une <strong>section ouverte par défaut</strong>&thinsp;? Si oui, est-ce toujours la
-              première&thinsp;?</li>
-            <li>Est-ce que l'accordeon affiche <strong>toujours sous forme d'accordeon</strong> ou affiche t'il comme
-              du texte normal à partir d'un certain breakpoint&thinsp;?</li>
-          </ul>
-        </section>
+          <section class="section is-creation is-management is-dev" id="tile-general">
+            <ul>
+              <li>
+                La tuile sera
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-clickable" value="Partiellement cliquable"> Partiellement cliquable
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-clickable" value="Entièrement cliquable" checked> Entièrement cliquable
+                </label>
+                <em class="tip js-dont-output" data-toggle-ref="tile-clickable" data-toggle-visible="Entièrement cliquable">Si la tuile contient des options, ex choix de couleurs, nous ne pourrons pas la rendre entièrement cliquable</em>
+              </li>
+              <li>
+                La <strong>hauteur</strong> des tuiles
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-height" value="Varira avec le contenu" checked> Varira avec le contenu
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-height" value="Devra toujours être la même"> Devra toujours être la même
+                </label>
+              </li>
+              <li>
+                Y aura t'il un effet/animation au <strong>survole</strong>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-hover" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-hover" value="Non" checked> Non
+                </label>
+              </li>
+              <li>
+                Le <strong>curseur</strong> sera
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-cursor" value="Par défaut" checked> Par défaut <img src="https://mdn.mozillademos.org/files/27/pointer.gif" alt="">
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-cursor" value="Personnalisé"> Personnalisé
+                </label>
+              </li>
+              <li data-toggle-ref="tile-cursor" data-toggle-visible="Personnalisé">
+                <span class="js-dont-output">Décrire le curseur</span>
+                <textarea rows="3"></textarea>
+              </li>
+              <li>
+                Le <strong>lien</strong> doit ouvrir dans
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-destination" value="La même page" checked> La même page
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-destination" value="Un nouvel onglet"> Un nouvel onglet
+                </label>
+                <em class="tip js-dont-output" data-toggle-ref="tile-destination" data-toggle-visible="La même page">En utilisant le <em>Middle click</em>, un usager peut toujours choisir d'ouvrir un lien dans un nouvel onglet</em>
+              </li>
+            </ul>
+          </section>
 
-        <section class="section is-creation is-management is-dev" id="composantes-formulaires">
-          <h3>
-            <a href="#composantes-formulaires" class="anchor">Formulaires</a>
-          </h3>
-          <ul>
-            <li>Utilisons-nous les <strong>boutons radio</strong> natifs ou devons-nous en créer des
-              personnalisés&thinsp;?</li>
-            <li>Utilisons-nous les <strong>boite à cocher</strong> natives ou devons-nous en créer des
-              personnalisés&thinsp;?</li>
-            <li>Utilisons-nous les <strong>menu déroulants</strong> natifs ou devons-nous en créer des
-              personnalisés&thinsp;?<br><em>(Il est préférable de minimiser le design du menu déroulant afin de laisser
-                soin au navigateur de choisir son affichage lorsqu'ouvert: par en haut, par en bas en roulette sur
-                mobile, etc).</em></li>
-            <li>Avons-nous prévu des <strong>messages d'erreurs</strong> <u>clairs</u> pour les champs&thinsp;?</li>
-            <li>Avons-nous prévu un message/page de <strong>confirmation</strong> à l'envois&thinsp;?</li>
-            <li>Devons-nous valider l'identité de l'usager via un <strong>Captcha</strong>&thinsp;?</li>
-          </ul>
-        </section>
-      </div>
+          <section class="section is-creation is-management is-dev" id="tuile-media">
+            <h3>
+              <a href="#tuile-media" class="anchor">Media</a>
+            </h3>
+            <ul>
+              <li>
+                Y aura t'il un <strong>média</strong> d'affiché dans la tuile&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-media" value="Oui" checked> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-media" value="Non"> Non
+                </label>
+              </li>
+              <li data-toggle-ref="tile-media" data-toggle-visible="Oui">
+                Les médias seront de <strong>type</strong>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-background" value="Image" checked> Image
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-background" value="Vidéo/Gif animé"> Vidéo/Gif animé
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-background" value="Image et Vidéo"> Image et Vidéo
+                </label>
+                <em class="tip tip--yellow js-dont-output" data-toggle-ref="tile-background" data-toggle-visible="Vidéo/Gif animé||Image et Vidéo">Causera un enjeu de performance si il y a plusieurs tuiles</em>
+              </li>
+              <li data-toggle-ref="tile-media" data-toggle-visible="Oui">
+                Le <strong>ratio</strong> s'ajustera en fonction
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-ratio" value="Du média"> Du média
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-ratio" value="D'un ratio prédéfini" checked> D'un ratio prédéfini
+                </label>
+                <em class="tip tip--yellow js-dont-output" data-toggle-ref="tile-ratio" data-toggle-visible="Du média en arrière-plan">Si
+                  les médias utilisés n'ont pas tous la même dimension, le format des héros varira d'une page à l'autre</em>
+                <em class="tip tip--yellow js-dont-output" data-toggle-ref="tile-ratio" data-toggle-visible="D'un ratio prédéfini">Certaines
+                  parties des médias seront probablement rognées</em>
+              </li>
+              <li data-toggle-ref="tile-ratio" data-toggle-visible="D'un ratio prédéfini">
+                Le <strong>focus</strong> devrait être
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-background-position" value="Au centre" checked> Au centre
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-background-position" value="Au centre, vers le haut"> Au centre, vers le haut
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-background-position" value="Personnalisable par média"> Personnalisable par média
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-background-position" value="Autre"> Autre
+                </label>
+                <em class="tip js-dont-output" data-toggle-ref="tile-background-position" data-toggle-visible="Au centre">Idéal pour
+                  les paysages</em>
+                <em class="tip js-dont-output" data-toggle-ref="tile-background-position" data-toggle-visible="Au centre, vers le haut">Idéal
+                  pour les portraits</em>
+              </li>
+              <li data-toggle-ref="tile-background-position" data-toggle-visible="Autre">
+                <textarea rows="1"></textarea>
+              </li>
+              <li data-toggle-ref="tile-media" data-toggle-visible="Oui">
+                Si <strong>aucun média</strong> n'est sélectionné, nous afficherons
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-media-fallback" value="Une image par défaut" checked> Une image par défaut
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-media-fallback" value="Une couleur unie"> Une couleur unie
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-media-fallback" value="Rien"> Rien
+                </label>
+              </li>
+              <li>
+                Peut-il y avoir du contenu par dessus le média&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-media-text-over" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-media-text-over" value="Non" checked> Non
+                </label>
+                <em class="tip js-dont-output">Ex, Date, catégorie, etc.</em>
+              </li>
+            </ul>
+          </section>
+
+          <section class="section is-creation is-management is-dev" id="tile-text">
+            <h3>
+              <a href="#tile-text" class="anchor">Texte</a>
+            </h3>
+            <ul>
+              <li>
+                Le <strong>titre</strong> sera
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-title" value="Obligatoire" checked> Obligatoire
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-title" value="Autre"> Optionnel
+                </label>
+              </li>
+              <li>
+                Le titre sera un champ
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-title-html" value="Texte" checked> Texte
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-title-html" value="Html"> Html
+                </label>
+                <em class="tip js-dont-output" data-toggle-ref="tile-title-html" data-toggle-visible="Html">Permet d'afficher des
+                  mots en <em>italic</em>, <strong>gras</strong>, <sup>exposant</sup>, etc.</em>
+              </li>
+              <li>
+                Peut-il y avoir un <strong>tagline</strong>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-tagline" value="Oui" checked> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-tagline" value="Non" checked> Non
+                </label>
+                <em class="tip js-dont-output">Affiché en haut du titre, ex: <em>(Nouvelles, sport, culture, etc.)</em></em>
+              </li>
+              <li data-toggle-ref="tile-tagline" data-toggle-visible="Oui">
+                Le tagline sera un champ
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-tagline-html" value="Texte" checked> Texte
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-tagline-html" value="Html"> Html
+                </label>
+                <em class="tip js-dont-output" data-toggle-ref="tile-tagline-html" data-toggle-visible="Html">Permet d'afficher
+                  des
+                  mots en <em>italic</em>, <strong>gras</strong>, <sup>exposant</sup>, etc.</em>
+              </li>
+              <li>
+                Peut-il y avoir une <strong>description</strong>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-description" value="Oui" checked> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-description" value="Non"> Non
+                </label>
+              </li>
+              <li data-toggle-ref="tile-description" data-toggle-visible="Oui">
+                La description sera un champ
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-description-html" value="Texte" checked> Texte
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-description-html" value="Html"> Html
+                </label>
+                <em class="tip js-dont-output" data-toggle-ref="tile-tagline-html" data-toggle-visible="Html">Permet d'afficher
+                  des mots en <em>italic</em>, <strong>gras</strong>, <sup>exposant</sup>, etc.</em>
+              </li>
+              <li data-toggle-ref="tile-description" data-toggle-visible="Oui">
+                Si la description est trop longue, nous la
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-description-ellipsis" value="laisserons telle quelle" checked> laisserons telle
+                  quelle
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="tile-description-ellipsis" value="tronquerons"> tronquerons
+                </label>
+                <em class="tip js-dont-output">Malheureusement, nous ne pouvons pas tronquer du contenu HTML</em>
+              </li>
+              <li data-toggle-ref="tile-description-ellipsis" data-toggle-visible="tronquerons">
+                Après combien de caractères devrions-nous la tronquer&thinsp;?
+                <textarea rows="1"></textarea>
+              </li>
+            </ul>
+          </section>
+
+          <em class="copied-msg tip tip--green tip--reveal">📋 Copier dans le Presse-Papier</em>
+          <input type="submit" name="submit" value="Générez pour Jira" class="btn btn--centered">
+          <textarea name="output" class="output-textarea"></textarea>
+        </div>
+      </form>
+    </article>
+
+    <!--=== Vidéo ===============================-->
+    <article class="article js-article" id="video">
+      <form name="video">
+        <div class="wrapper">
+          <h2>
+            <a href="#video" class="anchor">Video</a>
+          </h2>
+
+          <section class="section is-creation is-management is-dev" id="video-general">
+            <ul>
+              <li>
+                La vidéo sera <strong>hébergée</strong> sur
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-host" value="Nos serveurs"> Nos serveurs
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-host" value="Youtube" checked> Youtube
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-host" value="Vimeo"> Vimeo
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-host" value="Autre"> Autre
+                </label>
+                <em class="tip tip--yellow js-dont-output" data-toggle-ref="video-host" data-toggle-visible="Nos serveurs">Pensez à bien optimizer la vidéo</em>
+              </li>
+              <li data-toggle-ref="video-host" data-toggle-visible="Autre">
+                <textarea rows="1"></textarea>
+              </li>
+              <li data-toggle-ref="video-host" data-toggle-visible="Youtube">
+                Le <strong>titre</strong> sera
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-title" value="Affiché par dessus la vidéo" checked> Affiché par dessus la vidéo
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-title" value="Masqué"> Masqué
+                </label>
+              </li>
+              <li>
+                Le <strong>player</strong> sera dans
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-player" value="La page" checked> La page
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-player" value="Un popup"> Un popup
+                </label>
+              </li>
+              <li>
+                Les <strong>contrôles</strong> seront
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-controls" value="Visibles" checked> Visibles
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-controls" value="Masqués"> Masqués
+                </label>
+                <em class="tip js-dont-output">Ex: play/pause, volume, sourdine, etc.</em>
+              </li>
+              <li>
+                Le <strong>démarrage</strong> se fera
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-autoplay" value="Automatiquement"> Automatiquement
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-autoplay" value="Au clic de l'usager" checked> Au clic de l'usager
+                </label>
+                <em class="tip tip--yellow js-dont-output" data-toggle-ref="video-autoplay" data-toggle-visible="Automatiquement">De
+                  plus en plus de navigateurs bloquent cette fonctionnalité à moins que l'usager aille déjà <em>suffisament interagit</em>
+                  avec la page</em>
+              </li>
+              <li data-toggle-ref="video-autoplay" data-toggle-visible="Au clic de l'usager">
+                Elle jouera
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-inline" value="Dans la page" checked> Dans la page
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-inline" value="En plein écran"> En plein écran
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-inline" value="En plein écran uniquement sur mobile"> En plein écran uniquement sur mobile
+                </label>
+              </li>
+              <li>
+                Lorsque la vidéo sera sur <strong>pause</strong>, nous afficherons&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-poster" value="Le 1er frame" checked> Le 1<sup>er</sup> frame
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-poster" value="Un poster"> Un poster
+                </label>
+              </li>
+              <li>
+                Lorsque la vidéo se <strong>termine</strong>, elle
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-end" value="Reste sur le dernier frame" checked> Reste sur le dernier frame
+                </label>
+                <label class="radio js-dont-output" data-toggle-ref="video-host" data-toggle-visible="Youtube">
+                  <input type="radio" name="video-end" value="Affiche des vidéos similaires"> Affiche des vidéos similaires
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-end" value="Recommence"> Recommence <em>(Loop)</em>
+                </label>
+                <label class="radio js-dont-output" data-toggle-ref="video-player" data-toggle-visible="Un popup">
+                  <input type="radio" name="video-end" value="Ferme le popup"> Ferme le popup
+                </label>
+              </li>
+            </ul>
+          </section>
+
+          <section class="section is-creation is-management is-dev" id="video-mobile">
+            <h3>
+              <a href="#video-mobile" class="anchor">Mobile</a>
+            </h3>
+            <ul>
+              <li data-toggle-ref="video-host" data-toggle-visible="Youtube">
+                La vidéo jouera dans
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-app" value="L'app Youtube" checked> L'app Youtube
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="video-app" value="La page"> La page
+                </label>
+                <em class="tip js-dont-output">L'app Youtube nous sors du site, mais offre une expérience plus agréable</em>
+              </li>
+            </ul>
+          </section>
+
+          <em class="copied-msg tip tip--green tip--reveal">📋 Copier dans le Presse-Papier</em>
+          <input type="submit" name="submit" value="Générez pour Jira" class="btn btn--centered">
+          <textarea name="output" class="output-textarea"></textarea>
+        </div>
+      </form>
+    </article>
+
+    <!--=== Carousel ===============================-->
+    <article class="article js-article" id="carousel">
+      <form name="carousel">
+        <div class="wrapper">
+          <h2>
+            <a href="#carousel" class="anchor">Carousel</a>
+          </h2>
+
+          <section class="section is-creation is-management is-dev" id="carousel-general">
+            <ul>
+              <li>
+                Combien d'items sont affichés à la fois&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-items" checked value="1"> 1
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-items" value="2"> 2
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-items" value="3"> 3
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-items" value="Autre"> Autre
+                </label>
+              </li>
+              <li data-toggle-ref="carousel-items" data-toggle-visible="Autre">
+                <span class="js-dont-output">Spécifiez</span>
+                <textarea rows="1"></textarea>
+              </li>
+              <li>
+                Le carousel sera <strong>infini</strong>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-infinite" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-infinite" value="Non" checked> Non
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-infinite" value="Uniquement en mobile"> Uniquement en mobile
+                </label>
+              </li>
+              <li>
+                Le carousel tournera <strong>automatiquement</strong> <em class="js-dont-output">(Autoplay)</em>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-autoplay" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-autoplay" value="Non" checked> Non
+                </label>
+              </li>
+              <li>
+                L'animation de <strong>transition</strong> sera
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-animation" value="Un glissement horizontal" checked> Un glissement horizontal
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-animation" value="Un fondu"> Un fondu
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-animation" value="Autre"> Autre
+                </label>
+              </li>
+              <li data-toggle-ref="carousel-animation" data-toggle-visible="Autre">
+                Spécifiez
+                <textarea rows="3"></textarea>
+              </li>
+            </ul>
+          </section>
+
+          <section class="section is-creation is-management is-dev" id="carousel-navigation">
+            <h3>
+              <a href="#carousel-navigation" class="anchor">Navigation</a>
+            </h3>
+            <ul>
+              <li>
+                Les <strong>flèches</strong> seront
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-arrows" value="Masqués" checked> Masqués
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-arrows" value="Visibles"> Visibles
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-arrows" value="Visibles en desktop seulement"> Visibles en desktop seulement
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-arrows" value="Visibles en mobile seulement"> Visibles en mobile seulement
+                </label>
+              </li>
+              <li>
+                Les <strong>points</strong> sous le carousel seront
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-dots" value="Masqués" checked> Masqués
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-dots" value="Visibles"> Visibles
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-dots" value="Visibles en desktop seulement"> Visibles en desktop seulement
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-dots" value="Visibles en mobile seulement"> Visibles en mobile seulement
+                </label>
+              </li>
+              <li>
+                La <strong>position</strong> de l'item courant sera
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-position" value="Masqué" checked> Masqué
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-position" value="Visible"> Visible
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-position" value="Visible en desktop seulement"> Visible en desktop seulement
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="carousel-position" value="Visible en mobile seulement"> Visible en mobile seulement
+                </label>
+                <em class="tip js-dont-output">Ex: 3/16</em>
+              </li>
+            </ul>
+          </section>
+
+          <em class="copied-msg tip tip--green tip--reveal">📋 Copier dans le Presse-Papier</em>
+          <input type="submit" name="submit" value="Générez pour Jira" class="btn btn--centered">
+          <textarea name="output" class="output-textarea"></textarea>
+        </div>
+      </form>
+    </article>
+
+    <!--=== Accordeon ===============================-->
+    <article class="article js-article" id="accordeon">
+      <form name="accordeon">
+        <div class="wrapper">
+          <h2>
+            <a href="#accordeon" class="anchor">Accordeon</a>
+          </h2>
+
+          <section class="section is-creation is-management is-dev" id="carousel-general">
+            <ul>
+              <li>
+                La <strong>zone cliquable</strong> sera
+                <label class="radio js-dont-output">
+                  <input type="radio" name="accordeon-clickable" value="Les barres titres" checked> Les barres titres
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="accordeon-clickable" value="Les icônes"> Les icônes ▼
+                </label>
+              </li>
+              <li>
+                Plus d'une section pourraient êtres ouvertes à la fois
+                <label class="radio js-dont-output">
+                  <input type="radio" name="accordeon-multiple" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="accordeon-multiple" value="Non" checked> Non
+                </label>
+              </li>
+              <li>
+                Est-ce qu'une section est ouverte par <strong>défaut</strong>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="accordeon-default" value="Oui" checked> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="accordeon-default" value="Non"> Non
+                </label>
+              </li>
+              <li data-toggle-ref="accordeon-default" data-toggle-visible="Oui">
+                Laquelle&thinsp;?
+                <textarea rows="1"></textarea>
+              </li>
+            </ul>
+          </section>
+
+          <em class="copied-msg tip tip--green tip--reveal">📋 Copier dans le Presse-Papier</em>
+          <input type="submit" name="submit" value="Générez pour Jira" class="btn btn--centered">
+          <textarea name="output" class="output-textarea"></textarea>
+        </div>
+      </form>
+    </article>
+
+    <!--=== Carousel ===============================-->
+    <article class="article js-article" id="formulaire">
+      <form name="formulaire">
+        <div class="wrapper">
+          <h2>
+            <a href="#formulaire" class="anchor">Formulaire</a>
+          </h2>
+
+          <section class="section is-creation is-management is-dev" id="formulaire-general">
+            <ul>
+              <li>
+                Le style des <strong>boutons radio</strong> sera
+                <label class="radio js-dont-output">
+                  <input type="radio" name="form-radio-style" value="Celui natif du navigateur" checked> Celui natif du navigateur
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="form-radio-style" value="Personnalisé"> Personnalisé
+                </label>
+              </li>
+              <li>
+                Le style des <strong>boites à cocher</strong> sera
+                <label class="radio js-dont-output">
+                  <input type="radio" name="form-checkbox-style" value="Celui natif du navigateur" checked> Celui natif du navigateur
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="form-checkbox-style" value="Personnalisé"> Personnalisé
+                </label>
+              </li>
+              <li>
+                Le style des <strong>menus déroulants</strong> sera
+                <label class="radio js-dont-output">
+                  <input type="radio" name="form-dropdown-style" value="Celui natif du navigateur" checked> Celui natif du navigateur
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="form-dropdown-style" value="Personnalisé"> Personnalisé
+                </label>
+                <em class="tip js-dont-output">Laisser soin au navigateur l'affichage lorsqu'ouvert est moins risqué: Par en haut, par en bas, en roulette sur mobile, etc.</em>
+              </li>
+              <li>
+                Avons-nous des messages d'<strong>erreurs</strong>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="form-error-msg" value="Oui" checked> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="form-error-msg" value="Non"> Non
+                </label>
+              </li>
+              <li data-toggle-ref="form-error-msg" data-toggle-visible="Oui">
+                Les erreurs affichent
+                <label class="radio js-dont-output">
+                  <input type="radio" name="form-error-position" value="Au début du formulaire"> Au début du formulaire
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="form-error-position" value="À la fin du formulaire"> À la fin du formulaire
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="form-error-position" value="Relativement à chaque champ" checked> Relativement à chaque champ
+                </label>
+              </li>
+              <li>
+                Lorsque le formulaire est soumis <strong>correctement</strong>, nous
+                <label class="radio js-dont-output">
+                  <input type="radio" name="form-submitted" value="Affichons un message de confirmation" checked> Affichons un message de confirmation
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="form-submitted" value="Redirrigeons sur une autre page"> Redirrigeons sur une autre page
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="form-submitted" value="Ne faisons rien"> Ne faisons rien
+                </label>
+              </li>
+              <li>
+                Devons-nous valider que l'usager n'est pas un <strong>robot</strong>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="form-robot" value="Non" checked> Non
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="form-robot" value="Oui, à l'aide d'un Captcha" checked> Oui, à l'aide d'un Captcha
+                </label>
+              </li>
+            </ul>
+          </section>
+
+          <em class="copied-msg tip tip--green tip--reveal">📋 Copier dans le Presse-Papier</em>
+          <input type="submit" name="submit" value="Générez pour Jira" class="btn btn--centered">
+          <textarea name="output" class="output-textarea"></textarea>
+        </div>
+      </form>
+    </article>
+
+    <!--=== Grille d'items ===============================-->
+    <article class="article js-article" id="grille-d-items">
+      <form name="formulaire">
+        <div class="wrapper">
+          <h2>
+            <a href="#grille-d-items" class="anchor">Grille d'items</a>
+          </h2>
+
+          <section class="section is-creation is-management is-dev" id="grille-d-items-general">
+            <ul>
+              <li>
+                Est-ce que tous les items on le même <strong>style</strong>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-style" value="Oui" checked> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-style" value="Non"> Non
+                </label>
+              </li>
+              <li>
+                Y a t'il une <strong>limite</strong> d'items affiché&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-limit" value="Oui" checked> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-limit" value="Non"> Non
+                </label>
+                <em class="tip js-dont-output" data-toggle-ref="grid-items-limit" data-toggle-visible="Non">Si il y a 100 résultats, nous les affichons tous.</em>
+              </li>
+              <li data-toggle-ref="grid-items-limit" data-toggle-visible="Oui">
+                De <strong>combien</strong> d'items&thinsp;?
+                <textarea rows="1"></textarea>
+                <em class="tip js-dont-output">Ex: 12, 20, 40, etc.</em>
+              </li>
+              <li>
+                L'accès au résultats non affichés se fait via un
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-more" value="Bouton load more" checked> Bouton <em>Load more</em>
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-more" value="Lien vers une autre page"> Lien vers la page suivante
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-more" value="Scroll infini"> Scroll infini
+                </label>
+              </li>
+              <li>
+                Y a t'il moyen de <strong>filtrer</strong> les items&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-filter" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-filter" value="Non" checked> Non
+                </label>
+              </li>
+              <li data-toggle-ref="grid-items-filter" data-toggle-visible="Oui">
+                Le <strong>filtre par défaut</strong> est
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-filter-default" value="Date croissante"> Date ↑
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-filter-default" value="Date décroissante" checked> Date ↓
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-filter-default" value="Prix croissant"> Prix ↑
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-filter-default" value="Prix décroissant"> Prix ↓
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-filter-default" value="Autre"> Autre
+                </label>
+              </li>
+              <li>
+                Affichons-nous les <strong>infos</strong> des items affichés&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-infos" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-infos" value="Non" checked> Non
+                </label>
+                <em class="tip js-dont-output">Ex: X nombre de résultats trouvés en Y secondes avec Z mot-clé</em>
+              </li>
+              <li>
+                Si la <strong>grille est vide</strong> nous affichons
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-empty" value="Un message d'erreur"> Un message d'erreur
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-empty" value="Rien" checked> Rien
+                </label>
+              </li>
+            </ul>
+          </section>
+
+          <em class="copied-msg tip tip--green tip--reveal">📋 Copier dans le Presse-Papier</em>
+          <input type="submit" name="submit" value="Générez pour Jira" class="btn btn--centered">
+          <textarea name="output" class="output-textarea"></textarea>
+        </div>
+      </form>
     </article>
 
     <!--=== Composante ===============================-->

@@ -17,6 +17,18 @@
     cursor: pointer;
   }
 
+  img {
+    height: 1em;
+    width: auto;
+    vertical-align: text-bottom;
+    letter-spacing: 0;
+  }
+
+  em {
+    font-variant: none;
+    font-size: 0.85em;
+  }
+
   &:hover {
     color: #fff;
     background-color: palette(grey, medium);
