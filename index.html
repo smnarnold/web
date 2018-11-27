@@ -24,6 +24,14 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="./assets/css/main.css?v=20170531T161228Z" />
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-37943713-7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-37943713-7');
+  </script>
 </head>
 
 <body class="show-creation show-management show-dev show-web">
@@ -113,16 +121,24 @@
             </h3>
             <ul>
               <li>
-                <input type="checkbox" class="cbLang" checked> Français <span class="js-dont-output">(fr)</span>
+                <label>
+                  <input type="checkbox" class="cbLang" checked> Français <span class="js-dont-output">(fr)</span>
+                </label>
               </li>
               <li>
-                <input type="checkbox" class="cbLang"> Anglais <span class="js-dont-output">(en)</span>
+                <label>
+                  <input type="checkbox" class="cbLang"> Anglais <span class="js-dont-output">(en)</span>
+                </label>
               </li>
               <li>
-                <input type="checkbox" class="cbLang"> Espagnole <span class="js-dont-output">(es)</span>
+                <label>
+                  <input type="checkbox" class="cbLang"> Espagnole <span class="js-dont-output">(es)</span>
+                </label>
               </li>
               <li>
-                <input type="checkbox" name="langues" class="cbLang"> Autre(s)
+                <label>
+                  <input type="checkbox" name="langues" class="cbLang"> Autre(s)
+                </label>
               </li>
               <li data-toggle-ref="langues">
                 <textarea rows="1"></textarea>
@@ -178,39 +194,71 @@
             </h3>
             <ul>
               <li>
-                <input type="checkbox" checked>
-                <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_16x16.png" alt="Chrome">
-                <em>(Dernière version -1)</em>
+                <label>
+                  <input type="checkbox" checked>
+                  <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_16x16.png" alt="Chrome">
+                  <em>(Dernière version -1)</em>
+                </label>
               </li>
               <li>
-                <input type="checkbox" checked>
-                <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_16x16.png"
-                  alt="Firefox"> <em>(Dernière
-                  version -1)</em>
+                <label>
+                  <input type="checkbox" checked>
+                  <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_16x16.png"
+                    alt="Firefox"> <em>(Dernière version -1)</em>
+                </label>
               </li>
               <li>
-                <input type="checkbox" checked>
-                <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_16x16.png" alt="Safari">
-                <em>(Dernière
-                  version -1)</em>
+                <label>
+                  <input type="checkbox" checked>
+                  <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_16x16.png" alt="Safari">
+                  <em>(Dernière
+                    version -1)</em>
+                </label>
               </li>
               <li>
-                <input type="checkbox" checked>
-                <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_16x16.png" alt="Edge">
-                <em>(Dernière
-                  version -1)</em>
+                <label>
+                  <input type="checkbox" checked>
+                  <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_16x16.png" alt="Edge">
+                  <em>(Dernière
+                    version -1)</em>
+                  </label>
               </li>
-              <li><input type="checkbox" checked> <img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/16/Internet-Explorer-icon.png"
-                  alt="Internet Explorer 11"> 11</li>
-              <li><input type="checkbox"> <img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/16/Internet-Explorer-icon.png"
-                  alt="Internet Explorer 11"> 10</li>
-              <li><input type="checkbox"> <img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/16/Internet-Explorer-icon.png"
-                  alt="Internet Explorer 11"> 9</li>
-              <li><input type="checkbox"> <img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/16/Internet-Explorer-icon.png"
-                  alt="Internet Explorer 11"> 8</li>
-              <li><input type="checkbox"> <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_16x16.png"
-                  alt="Opera"> <em>(Dernière
-                  version -1)</em></li>
+              <li>
+                <label>
+                  <input type="checkbox" checked>
+                  <img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/16/Internet-Explorer-icon.png"
+                    alt="Internet Explorer 11"> 11
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox">
+                  <img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/16/Internet-Explorer-icon.png"
+                    alt="Internet Explorer 11"> 10
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox">
+                  <img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/16/Internet-Explorer-icon.png"
+                    alt="Internet Explorer 11"> 9
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox">
+                  <img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/16/Internet-Explorer-icon.png"
+                    alt="Internet Explorer 11"> 8
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox">
+                  <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_16x16.png"
+                    alt="Opera">
+                  <em>(Dernière version -1)</em>
+                </label>
+              </li>
             </ul>
           </section>
 
@@ -920,14 +968,11 @@
             <ul>
               <li>
                 Les médias seront de <strong>type</strong>
-                <label class="radio js-dont-output">
-                  <input type="radio" name="hero-background" value="Image" checked> Image
+                <label class="checkbox">
+                  <input type="checkbox" name="hero-background-image" value="Image" checked> Image
                 </label>
-                <label class="radio js-dont-output">
-                  <input type="radio" name="hero-background" value="Vidéo/Gif animé"> Vidéo/Gif animé
-                </label>
-                <label class="radio js-dont-output">
-                  <input type="radio" name="hero-background" value="Image et Vidéo"> Image et Vidéo
+                <label class="checkbox">
+                  <input type="checkbox" name="hero-background-video" value="Vidéo/Gif animé"> Vidéo/Gif animé
                 </label>
               </li>
               <li>
@@ -1260,16 +1305,13 @@
               </li>
               <li data-toggle-ref="tile-media" data-toggle-visible="Oui">
                 Les médias seront de <strong>type</strong>
-                <label class="radio js-dont-output">
-                  <input type="radio" name="tile-background" value="Image" checked> Image
+                <label class="checkbox">
+                  <input type="checkbox" name="tile-background-image" value="Image" checked> Image
                 </label>
-                <label class="radio js-dont-output">
-                  <input type="radio" name="tile-background" value="Vidéo/Gif animé"> Vidéo/Gif animé
+                <label class="checkbox">
+                  <input type="checkbox" name="tile-background-video" value="Vidéo/Gif animé"> Vidéo/Gif animé
                 </label>
-                <label class="radio js-dont-output">
-                  <input type="radio" name="tile-background" value="Image et Vidéo"> Image et Vidéo
-                </label>
-                <em class="tip tip--yellow js-dont-output" data-toggle-ref="tile-background" data-toggle-visible="Vidéo/Gif animé||Image et Vidéo">Causera un enjeu de performance si il y a plusieurs tuiles</em>
+                <em class="tip tip--yellow js-dont-output" data-toggle-ref="tile-background-video">Causera un enjeu de performance si il y a plusieurs tuiles</em>
               </li>
               <li data-toggle-ref="tile-media" data-toggle-visible="Oui">
                 Le <strong>ratio</strong> s'ajustera en fonction
@@ -1280,7 +1322,7 @@
                   <input type="radio" name="tile-ratio" value="D'un ratio prédéfini" checked> D'un ratio prédéfini
                 </label>
                 <em class="tip tip--yellow js-dont-output" data-toggle-ref="tile-ratio" data-toggle-visible="Du média en arrière-plan">Si
-                  les médias utilisés n'ont pas tous la même dimension, le format des héros varira d'une page à l'autre</em>
+                  les médias utilisés n'ont pas tous la même dimension, le format des tuiles varira</em>
                 <em class="tip tip--yellow js-dont-output" data-toggle-ref="tile-ratio" data-toggle-visible="D'un ratio prédéfini">Certaines
                   parties des médias seront probablement rognées</em>
               </li>
@@ -1423,12 +1465,365 @@
       </form>
     </article>
 
+    <!--=== Grille d'items ===============================-->
+    <article class="article js-article" id="grille-d-items">
+      <form name="formulaire">
+        <div class="wrapper">
+          <h2>
+            <a href="#grille-d-items" class="anchor">Grille d'items</a>
+          </h2>
+
+          <section class="section is-creation is-management is-dev" id="grille-d-items-general">
+            <ul>
+              <li>
+                Est-ce que tous les items on le même <strong>style</strong>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-style" value="Oui" checked> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-style" value="Non"> Non
+                </label>
+              </li>
+              <li>
+                Y a t'il une <strong>limite</strong> d'items affiché&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-limit" value="Oui" checked> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-limit" value="Non"> Non
+                </label>
+                <em class="tip js-dont-output" data-toggle-ref="grid-items-limit" data-toggle-visible="Non">Si il y a 100
+                  résultats, nous les affichons tous.</em>
+              </li>
+              <li data-toggle-ref="grid-items-limit" data-toggle-visible="Oui">
+                De <strong>combien</strong> d'items&thinsp;?
+                <textarea rows="1"></textarea>
+                <em class="tip js-dont-output">Ex: 12, 20, 40, etc.</em>
+              </li>
+              <li>
+                L'accès au résultats non affichés se fait via un
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-more" value="Bouton load more" checked> Bouton <em>Load more</em>
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-more" value="Lien vers une autre page"> Lien vers la page suivante
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-more" value="Scroll infini"> Scroll infini
+                </label>
+              </li>
+              <li>
+                Y a t'il moyen de <strong>filtrer</strong> les items&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-filter" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-filter" value="Non" checked> Non
+                </label>
+              </li>
+              <li data-toggle-ref="grid-items-filter" data-toggle-visible="Oui">
+                Le <strong>filtre par défaut</strong> est par
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-filter-default" value="Ordre alphabetique" checked> Nom ↑
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-filter-default" value="Ordre alphabetique inverse"> Nom ↓
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-filter-default" value="Date croissante"> Date ↑
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-filter-default" value="Date décroissante"> Date ↓
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-filter-default" value="Prix croissant"> Prix ↑
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-filter-default" value="Prix décroissant"> Prix ↓
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-filter-default" value="Autre"> Autre
+                </label>
+              </li>
+              <li>
+                Affichons-nous le <strong>détail</strong> des items affichés&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-details" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-details" value="Non" checked> Non
+                </label>
+                <em class="tip js-dont-output">Ex: X nombre de résultats trouvés en Y secondes avec Z mot-clé</em>
+              </li>
+              <li>
+                Si la <strong>grille est vide</strong> nous affichons
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-empty" value="Un message d'erreur"> Un message d'erreur
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="grid-items-empty" value="Rien" checked> Rien
+                </label>
+              </li>
+            </ul>
+          </section>
+
+          <em class="copied-msg tip tip--green tip--reveal">📋 Copier dans le Presse-Papier</em>
+          <input type="submit" name="submit" value="Générez pour Jira" class="btn btn--centered">
+          <textarea name="output" class="output-textarea"></textarea>
+        </div>
+      </form>
+    </article>
+
+    <!--=== 50 / 50 ===============================-->
+    <article class="article js-article" id="cinquante-cinquante">
+      <form name="cinquante-cinquante">
+        <div class="wrapper">
+          <h2>
+            <a href="#cinquante-cinquante" class="anchor">50/50</a>
+          </h2>
+
+          <section class="section is-creation is-management is-dev" id="cinquante-cinquante-general">
+            <ul>
+              <li>
+                Le <strong>ratio</strong> des cellules sera
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-ratio" value="50/50" checked> 50% - 50%
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-ratio" value="66/34"> 66% - 34%
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-ratio" value="75/25"> 75% - 25%
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-ratio" value="Autre"> Autre
+                </label>
+              </li>
+              <li data-toggle-ref="fifty-ratio" data-toggle-visible="Autre">
+                Spécifier le ratio
+                <textarea rows="1"></textarea>
+              </li>
+              <li>
+                Est-ce que l'usager peux choisir une <strong>couleur de fond</strong>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-background-color" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-background-color" value="Non" checked> Non
+                </label>
+              </li>
+              <li data-toggle-ref="fifty-background-color" data-toggle-visible="Oui">
+                La couleur de fond doit
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-background-color-width" value="S'arrêter avec le contenu"> S'arrêter avec le contenu
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-background-color-width" value="Prendre toute la largeur de la page" checked> Prendre toute la largeur de la page
+                </label>
+              </li>
+              <li data-toggle-ref="fifty-background-color" data-toggle-visible="Oui">
+                L'admin peut choisir la couleur de fond via
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-background-color-origin" value="Une liste de thèmes" checked> Une liste de thèmes
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-background-color-origin" value="Un color picker"> <em>Un color picker</em>
+                </label>
+              </li>
+              <li data-toggle-ref="fifty-background-color" data-toggle-visible="Oui">
+                Chaque cellule <em>(Media/Texte)</em> peut avoir sa propre couleur d'arrière-plan&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-background-color-separate" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-background-color-separate" value="Non" checked> Non
+                </label>
+              </li>
+              <li>
+                Si deux 50/50 <strong>se suivent</strong>, l'affichage doit-être
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-checkboard" value="Automatiquement inversé" checked> Automatiquement inversé
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-checkboard" value="Sélectionné par l'admin"> Sélectionné par l'admin
+                </label>
+              </li>
+            </ul>
+          </section>
+
+          <section class="section is-creation is-management is-dev" id="cinquante-cinquante-media">
+            <h3>
+              <a href="#cinquante-cinquante-media" class="anchor">Media</a>
+            </h3>
+            <ul>
+              <li>
+                Comprendra des
+                <label class="checkbox">
+                  <input type="checkbox" name="fifty-media-type" value="images" checked> Images
+                </label>
+                <label class="checkbox">
+                  <input type="checkbox" name="fifty-media-type" value="vidéos/Gif animés"> Vidéo/Gif animé
+                </label>
+                <label class="checkbox">
+                  <input type="checkbox" name="fifty-media-type" value="cartes"> Cartes
+                </label>
+              </li>
+              <li>
+                Le <strong>ratio</strong> s'ajustera en fonction
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-media-ratio" value="Du média" checked> Du média
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-media-ratio" value="D'un ratio prédéfini"> D'un ratio prédéfini
+                </label>
+                <em class="tip tip--yellow js-dont-output" data-toggle-ref="fifty-media-ratio" data-toggle-visible="Du média en arrière-plan">Si
+                  les médias utilisés n'ont pas tous la même dimension, le format des 50/50 varira</em>
+                <em class="tip tip--yellow js-dont-output" data-toggle-ref="fifty-media-ratio" data-toggle-visible="D'un ratio prédéfini">Certaines
+                  parties des médias seront probablement rognées</em>
+              </li>
+              <li>
+                En <strong>mobile</strong>, s'affichera
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-media-mobile-order" value="Dans son ordre naturel" checked> Dans son ordre naturel
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-media-mobile-order" value="Avant le texte"> Avant le texte
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-media-mobile-order" value="Après le texte"> Après le texte
+                </label>
+              </li>
+            </ul>
+          </section>
+
+          <section class="section is-creation is-management is-dev" id="fifty-text">
+            <h3>
+              <a href="#fifty-text" class="anchor">Texte</a>
+            </h3>
+            <ul>
+              <li>
+                Par rapport au média, le contenu texte sera <strong>aligné</strong> au
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-text-align" value="Top"> Top
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-text-align" value="Centre" checked> Centre
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-text-align" value="Bas"> Bas
+                </label>
+              </li>
+              <li>
+                Le <strong>titre</strong> sera
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-title" value="Obligatoire" checked> Obligatoire
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-title" value="Autre"> Optionnel
+                </label>
+              </li>
+              <li>
+                Le titre sera un champ
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-title-html" value="Texte" checked> Texte
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-title-html" value="Html"> Html
+                </label>
+                <em class="tip js-dont-output" data-toggle-ref="fifty-title-html" data-toggle-visible="Html">Permet d'afficher des
+                  mots en <em>italic</em>, <strong>gras</strong>, <sup>exposant</sup>, etc.</em>
+              </li>
+              <li>
+                Peut-il y avoir un <strong>tagline</strong>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-tagline" value="Oui" checked> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-tagline" value="Non" checked> Non
+                </label>
+                <em class="tip js-dont-output">Affiché en haut du titre, ex: <em>(Nouvelles, sport, culture, etc.)</em></em>
+              </li>
+              <li data-toggle-ref="fifty-tagline" data-toggle-visible="Oui">
+                Le tagline sera un champ
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-tagline-html" value="Texte" checked> Texte
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-tagline-html" value="Html"> Html
+                </label>
+                <em class="tip js-dont-output" data-toggle-ref="fifty-tagline-html" data-toggle-visible="Html">Permet d'afficher
+                  des
+                  mots en <em>italic</em>, <strong>gras</strong>, <sup>exposant</sup>, etc.</em>
+              </li>
+              <li>
+                Peut-il y avoir une <strong>description</strong>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-description" value="Oui" checked> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-description" value="Non"> Non
+                </label>
+              </li>
+              <li data-toggle-ref="fifty-description" data-toggle-visible="Oui">
+                La description sera un champ
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-description-html" value="Texte" checked> Texte
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-description-html" value="Html"> Html
+                </label>
+                <em class="tip js-dont-output" data-toggle-ref="fifty-tagline-html" data-toggle-visible="Html">Permet d'afficher
+                  des mots en <em>italic</em>, <strong>gras</strong>, <sup>exposant</sup>, etc.</em>
+              </li>
+              <li data-toggle-ref="fifty-description" data-toggle-visible="Oui">
+                Si la description est trop longue, nous la
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-description-ellipsis" value="laisserons telle quelle" checked> laisserons telle
+                  quelle
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-description-ellipsis" value="tronquerons"> tronquerons
+                </label>
+                <em class="tip js-dont-output">Malheureusement, nous ne pouvons pas tronquer du contenu HTML</em>
+              </li>
+              <li data-toggle-ref="fifty-description-ellipsis" data-toggle-visible="tronquerons">
+                Après combien de caractères devrions-nous la tronquer&thinsp;?
+                <textarea rows="1"></textarea>
+              </li>
+              <li>
+                Peut-il y avoir un <em>Call to action</em>&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-button" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-button" value="Non" checked> Non
+                </label>
+              </li>
+              <li data-toggle-ref="fifty-button" data-toggle-visible="Oui">
+                Est-ce que la même <em>Call to action</em> doit-être appliqué au média&thinsp;?
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-button-media" value="Oui"> Oui
+                </label>
+                <label class="radio js-dont-output">
+                  <input type="radio" name="fifty-button-media" value="Non" checked> Non
+                </label>
+              </li>
+            </ul>
+          </section>
+
+          <em class="copied-msg tip tip--green tip--reveal">📋 Copier dans le Presse-Papier</em>
+          <input type="submit" name="submit" value="Générez pour Jira" class="btn btn--centered">
+          <textarea name="output" class="output-textarea"></textarea>
+        </div>
+      </form>
+    </article>
+
     <!--=== Vidéo ===============================-->
     <article class="article js-article" id="video">
       <form name="video">
         <div class="wrapper">
           <h2>
-            <a href="#video" class="anchor">Video</a>
+            <a href="#video" class="anchor">Vidéo</a>
           </h2>
 
           <section class="section is-creation is-management is-dev" id="video-general">
@@ -1737,7 +2132,7 @@
       </form>
     </article>
 
-    <!--=== Carousel ===============================-->
+    <!--=== Formulaire ===============================-->
     <article class="article js-article" id="formulaire">
       <form name="formulaire">
         <div class="wrapper">
@@ -1815,108 +2210,6 @@
                 </label>
                 <label class="radio js-dont-output">
                   <input type="radio" name="form-robot" value="Oui, à l'aide d'un Captcha" checked> Oui, à l'aide d'un Captcha
-                </label>
-              </li>
-            </ul>
-          </section>
-
-          <em class="copied-msg tip tip--green tip--reveal">📋 Copier dans le Presse-Papier</em>
-          <input type="submit" name="submit" value="Générez pour Jira" class="btn btn--centered">
-          <textarea name="output" class="output-textarea"></textarea>
-        </div>
-      </form>
-    </article>
-
-    <!--=== Grille d'items ===============================-->
-    <article class="article js-article" id="grille-d-items">
-      <form name="formulaire">
-        <div class="wrapper">
-          <h2>
-            <a href="#grille-d-items" class="anchor">Grille d'items</a>
-          </h2>
-
-          <section class="section is-creation is-management is-dev" id="grille-d-items-general">
-            <ul>
-              <li>
-                Est-ce que tous les items on le même <strong>style</strong>&thinsp;?
-                <label class="radio js-dont-output">
-                  <input type="radio" name="grid-items-style" value="Oui" checked> Oui
-                </label>
-                <label class="radio js-dont-output">
-                  <input type="radio" name="grid-items-style" value="Non"> Non
-                </label>
-              </li>
-              <li>
-                Y a t'il une <strong>limite</strong> d'items affiché&thinsp;?
-                <label class="radio js-dont-output">
-                  <input type="radio" name="grid-items-limit" value="Oui" checked> Oui
-                </label>
-                <label class="radio js-dont-output">
-                  <input type="radio" name="grid-items-limit" value="Non"> Non
-                </label>
-                <em class="tip js-dont-output" data-toggle-ref="grid-items-limit" data-toggle-visible="Non">Si il y a 100 résultats, nous les affichons tous.</em>
-              </li>
-              <li data-toggle-ref="grid-items-limit" data-toggle-visible="Oui">
-                De <strong>combien</strong> d'items&thinsp;?
-                <textarea rows="1"></textarea>
-                <em class="tip js-dont-output">Ex: 12, 20, 40, etc.</em>
-              </li>
-              <li>
-                L'accès au résultats non affichés se fait via un
-                <label class="radio js-dont-output">
-                  <input type="radio" name="grid-items-more" value="Bouton load more" checked> Bouton <em>Load more</em>
-                </label>
-                <label class="radio js-dont-output">
-                  <input type="radio" name="grid-items-more" value="Lien vers une autre page"> Lien vers la page suivante
-                </label>
-                <label class="radio js-dont-output">
-                  <input type="radio" name="grid-items-more" value="Scroll infini"> Scroll infini
-                </label>
-              </li>
-              <li>
-                Y a t'il moyen de <strong>filtrer</strong> les items&thinsp;?
-                <label class="radio js-dont-output">
-                  <input type="radio" name="grid-items-filter" value="Oui"> Oui
-                </label>
-                <label class="radio js-dont-output">
-                  <input type="radio" name="grid-items-filter" value="Non" checked> Non
-                </label>
-              </li>
-              <li data-toggle-ref="grid-items-filter" data-toggle-visible="Oui">
-                Le <strong>filtre par défaut</strong> est
-                <label class="radio js-dont-output">
-                  <input type="radio" name="grid-items-filter-default" value="Date croissante"> Date ↑
-                </label>
-                <label class="radio js-dont-output">
-                  <input type="radio" name="grid-items-filter-default" value="Date décroissante" checked> Date ↓
-                </label>
-                <label class="radio js-dont-output">
-                  <input type="radio" name="grid-items-filter-default" value="Prix croissant"> Prix ↑
-                </label>
-                <label class="radio js-dont-output">
-                  <input type="radio" name="grid-items-filter-default" value="Prix décroissant"> Prix ↓
-                </label>
-                <label class="radio js-dont-output">
-                  <input type="radio" name="grid-items-filter-default" value="Autre"> Autre
-                </label>
-              </li>
-              <li>
-                Affichons-nous les <strong>infos</strong> des items affichés&thinsp;?
-                <label class="radio js-dont-output">
-                  <input type="radio" name="grid-items-infos" value="Oui"> Oui
-                </label>
-                <label class="radio js-dont-output">
-                  <input type="radio" name="grid-items-infos" value="Non" checked> Non
-                </label>
-                <em class="tip js-dont-output">Ex: X nombre de résultats trouvés en Y secondes avec Z mot-clé</em>
-              </li>
-              <li>
-                Si la <strong>grille est vide</strong> nous affichons
-                <label class="radio js-dont-output">
-                  <input type="radio" name="grid-items-empty" value="Un message d'erreur"> Un message d'erreur
-                </label>
-                <label class="radio js-dont-output">
-                  <input type="radio" name="grid-items-empty" value="Rien" checked> Rien
                 </label>
               </li>
             </ul>

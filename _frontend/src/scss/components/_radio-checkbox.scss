@@ -1,4 +1,10 @@
-.radio {
+input[type='radio'],
+input[type='checkbox'] {
+  vertical-align: text-top;
+}
+
+.radio,
+.checkbox {
   display: block;
   background-color: palette(grey, light);
   padding: 0.15em 0.5em;
@@ -44,8 +50,15 @@
   }
 }
 
+/* stylelint-disable */
+.checkbox {
+  border-radius: 0;
+}
+/* stylelint-enable */
+
 @media (min-width: 576px) {
-  .radio {
+  .radio,
+  .checkbox {
     display: inline-block;
     margin: 0 0.35em 0 0;
 

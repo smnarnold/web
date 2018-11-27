@@ -58,6 +58,7 @@ class Checklist {
     let context = element.closest('form');
     let selector = element.getAttribute('data-toggle-ref');
     let inputsArr = this.getNode(selector, context);
+
     if (!inputsArr.length) inputsArr = [inputsArr]; // Force inputs to be an array even if there is only 1 value
     let type = inputsArr[0].type; // radio, checkbox, etc.
 
@@ -216,7 +217,6 @@ class Checklist {
       let title = form.querySelector('h2').innerText;
       html += `h2. ${title}\n`;
       html += content;
-      html += '\n----';
     }
 
     return html;
@@ -292,21 +292,21 @@ class Checklist {
   }
 
   getInput(node) {
-    let input = node.querySelector('input');
+    let input = node.querySelectorAll('input');
     let select = node.querySelector('select');
     let textarea = node.querySelector('textarea');
     let html = '';
 
-    if (input !== null) {
-      switch (input.type) {
+    if (input.length) {
+      switch (input[0].type) {
         case 'url':
-          html = this.getUrl(node, input);
+          html = this.getUrl(node, input[0]);
           break;
         case 'date':
-          html = this.getDate(node, input);
+          html = this.getDate(node, input[0]);
           break;
         case 'radio':
-          html = this.getRadio(node, input);
+          html = this.getRadio(node, input[0]);
           break;
         case 'checkbox':
           html = this.getCheckbox(node, input);
@@ -369,6 +369,7 @@ class Checklist {
     let name = input.getAttribute('name');
     let form = input.closest('form');
     let value = this.getNode(name, form).value;
+
     if (value !== '') {
       let prefix = this.getText(node);
       if (prefix !== '') prefix += ': ';
@@ -377,11 +378,29 @@ class Checklist {
     return html;
   }
 
-  getCheckbox(node, input) {
+  getCheckbox(node, inputs) {
     let html = '';
-    if (input.checked) {
-      html = this.getText(node);
+
+    if (inputs.length === 1) {
+      if (inputs[0].checked) {
+        html = this.getText(node);
+      }
+    } else if (inputs.length > 1) {
+      html = this.getTextWithoutInput(node);
+
+      let checkboxesChecked = Array.from(inputs).filter(input => input.checked);
+      for (let x = 0; x < checkboxesChecked.length; x++) {
+        let checkbox = checkboxesChecked[x];
+        let prefix = ', ';
+
+        if (x === 0) prefix = ' *';
+        else if (x === checkboxesChecked.length - 1) prefix = ' et ';
+
+        html += `${prefix}${checkbox.value}`;
+      }
+      html += '*';
     }
+
     return html;
   }
 
@@ -389,6 +408,17 @@ class Checklist {
     let str = node.innerHTML;
     str = this.replaceImg(str);
     str = this.stripTags(str);
+    str = str.trim(); // remove start and end whitespaces;
+    str = str.replace(/\r?\n|\r/g, ''); // strip linebreaks;
+    str = str.replace(/ +(?= )/g, ''); // strip multiple white spaces;
+
+    return str;
+  }
+
+  getTextWithoutInput(node) {
+    let str = node.innerHTML;
+    str = this.replaceImg(str);
+    str = this.stripInputs(str);
     str = str.trim(); // remove start and end whitespaces;
     str = str.replace(/\r?\n|\r/g, ''); // strip linebreaks;
     str = str.replace(/ +(?= )/g, ''); // strip multiple white spaces;
@@ -412,6 +442,19 @@ class Checklist {
     el.innerHTML = str;
     el.querySelectorAll('.js-dont-output').forEach(e =>
       e.parentNode.removeChild(e)
+    );
+    str = el.innerText;
+    return str;
+  }
+
+  stripInputs(str) {
+    let el = document.createElement('div');
+    el.innerHTML = str;
+    el.querySelectorAll('.js-dont-output').forEach(e =>
+      e.parentNode.removeChild(e)
+    );
+    el.querySelectorAll('input, textarea, select').forEach(e =>
+      e.closest('label').remove()
     );
     str = el.innerText;
     return str;
